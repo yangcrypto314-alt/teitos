@@ -1,0 +1,53 @@
+.tarjeta {
+  border: 1px solid #c9c9c9;
+  border-radius: 8px;
+  padding: 16px;
+  background: #fff;
+  text-align: left;
+}
+
+.cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.codigo {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.estado {
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.provincia {
+  margin: 4px 0 12px;
+  color: #555;
+}
+
+.datos {
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.datos div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.datos dt {
+  color: #555;
+}
+
+.datos dd {
+  margin: 0;
+  font-weight: 600;
+}
