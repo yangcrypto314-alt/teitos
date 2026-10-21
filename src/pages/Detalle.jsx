@@ -1,11 +1,14 @@
 ﻿import { Link, useParams } from 'react-router';
 import useVivienda from '../hooks/useVivienda.js';
+import useSolicitud from '../hooks/useSolicitud.js';
+import { motivoRechazo } from '../context/solicitudReducer.js';
 import { formatearRenta, textoAccesibilidad } from '../utils/formato.js';
 import styles from './Detalle.module.css';
 
 export default function Detalle() {
   const { id } = useParams();
   const { vivienda, convocatoria, cargando, error } = useVivienda(id);
+  const { estado, dispatch } = useSolicitud();
 
   if (cargando) return <p role="status">Cargando vivienda…</p>;
 
@@ -25,6 +28,17 @@ export default function Detalle() {
 
   const solicitable =
     !vivienda.adjudicada && convocatoria?.estado === 'abierta';
+
+  const resumen = {
+    id: vivienda.id,
+    referencia: vivienda.referencia,
+    municipio: vivienda.municipio,
+    provincia: vivienda.provincia,
+    renta: vivienda.renta,
+    convocatoriaId: vivienda.convocatoriaId,
+  };
+  const yaAnadida = estado.seleccion.some((s) => s.id === vivienda.id);
+  const motivo = yaAnadida ? null : motivoRechazo(estado, resumen);
 
   return (
     <section className={styles.ficha}>
@@ -71,12 +85,30 @@ export default function Detalle() {
       <p>{vivienda.descripcion}</p>
 
       <div className={styles.acciones}>
-        {solicitable ? (
-          <Link to="/solicitud">Solicitar esta vivienda</Link>
-        ) : (
+        {!solicitable ? (
           <span>
             No se puede solicitar: la vivienda está adjudicada o su convocatoria no está abierta.
           </span>
+        ) : yaAnadida ? (
+          <>
+            <span role="status">Añadida a tu solicitud.</span>
+            <Link to="/solicitud">Ver mi solicitud</Link>
+            <button
+              type="button"
+              onClick={() => dispatch({ tipo: 'quitar', id: vivienda.id })}
+            >
+              Quitar de mi solicitud
+            </button>
+          </>
+        ) : motivo ? (
+          <span role="status">{motivo}</span>
+        ) : (
+          <button
+            type="button"
+            onClick={() => dispatch({ tipo: 'anadir', vivienda: resumen })}
+          >
+            Añadir a mi solicitud
+          </button>
         )}
         <Link to="/viviendas">Volver al listado</Link>
       </div>
