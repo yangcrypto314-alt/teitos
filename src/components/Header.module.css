@@ -1,0 +1,28 @@
+.menu {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.menu a {
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  border-bottom-color: currentColor;
+}
+
+/* La página actual se marca con subrayado, no solo con color */
+.menu a[aria-current='page'] {
+  border-bottom-color: currentColor;
+  font-weight: 700;
+}
+
+.menu a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
