@@ -1,17 +1,6 @@
 import { Link } from 'react-router';
 import styles from './DwellingCard.module.css';
-import { formatearRenta } from '../utils/formato.js';
-
-const ACCESIBILIDAD = {
-  adaptada: 'Adaptada',
-  practicable: 'Practicable',
-};
-
-function textoAccesibilidad(valor) {
-  // Sin dato no es lo mismo que "sin adaptar"
-  if (valor === undefined || valor === null) return 'Sin dato';
-  return ACCESIBILIDAD[valor] ?? valor;
-}
+import { formatearRenta, textoAccesibilidad } from '../utils/formato.js';
 
 export default function DwellingCard({ vivienda }) {
   const {

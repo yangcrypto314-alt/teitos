@@ -6,7 +6,9 @@ export async function pedir(ruta, opciones) {
   const respuesta = await fetch(`${API_URL}${ruta}`, opciones);
 
   if (!respuesta.ok) {
-    throw new Error(`Error ${respuesta.status} al pedir ${ruta}`);
+    const error = new Error(`Error ${respuesta.status} al pedir ${ruta}`);
+    error.estado = respuesta.status;
+    throw error;
   }
   if (respuesta.status === 204) {
     return null;
