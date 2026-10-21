@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getConvocatorias } from '../assets/api/convocatorias.js';
-
-export default function useConvocatorias() {
+import { getConvocatorias } from '../api/convocatorias.js';export default function useConvocatorias() {
   const [datos, setDatos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);

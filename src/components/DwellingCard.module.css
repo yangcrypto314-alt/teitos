@@ -1,0 +1,44 @@
+.tarjeta {
+  border: 1px solid #c9c9c9;
+  border-radius: 8px;
+  padding: 16px;
+  background: #fff;
+  text-align: left;
+}
+
+.referencia {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.lugar {
+  margin: 4px 0 12px;
+  color: #555;
+}
+
+.datos {
+  margin: 0 0 12px;
+  display: grid;
+  gap: 6px;
+}
+
+.datos div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.datos dt {
+  color: #555;
+}
+
+.datos dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}
+
+.enlace {
+  display: inline-block;
+  font-weight: 600;
+}
