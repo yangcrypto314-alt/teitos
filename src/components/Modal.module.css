@@ -1,0 +1,40 @@
+.modal {
+  width: 90%;
+  max-width: 520px;
+  padding: 0;
+  border: 1px solid #666;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+}
+
+.modal::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.contenido {
+  padding: 24px;
+  text-align: left;
+}
+
+.contenido h2 {
+  margin-top: 0;
+  color: #222;
+}
+
+.acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.acciones button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.acciones button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

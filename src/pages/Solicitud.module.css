@@ -1,3 +1,27 @@
+.pasos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.pasos li {
+  padding: 6px 12px;
+  border: 1px solid #555;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+/* El paso actual se marca con negrita y subrayado, no solo con color */
+.pasos li[aria-current='step'] {
+  border-color: currentColor;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
 .lista {
   list-style: none;
   padding: 0;
@@ -32,4 +56,54 @@
 .botones button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+.formulario {
+  display: grid;
+  gap: 16px;
+  max-width: 560px;
+  margin: 16px auto;
+}
+
+.revision {
+  max-width: 560px;
+  margin: 16px auto;
+  text-align: left;
+}
+
+.resumen {
+  display: grid;
+  gap: 8px;
+  margin: 8px 0 16px;
+}
+
+.resumen div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #555;
+}
+
+.resumen dt {
+  opacity: 0.8;
+}
+
+.resumen dd {
+  margin: 0;
+  font-weight: 600;
+  text-align: right;
+}
+
+.navegacion {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 560px;
+  margin: 24px auto;
+}
+
+.navegacion button {
+  padding: 10px 20px;
+  cursor: pointer;
 }

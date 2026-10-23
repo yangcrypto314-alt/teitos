@@ -63,7 +63,7 @@ export function solicitudReducer(estado, accion) {
       return { ...estado, paso: accion.paso };
 
     case 'enviada':
-      return { ...estado, solicitudId: accion.id };
+      return { ...estadoInicial, solicitudId: accion.id };
 
     case 'vaciar':
       return estadoInicial;

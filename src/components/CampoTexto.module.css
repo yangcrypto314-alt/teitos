@@ -1,0 +1,31 @@
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+}
+
+.campo input,
+.campo select {
+  padding: 8px;
+  font-size: 1rem;
+}
+
+.campo input[aria-invalid='true'],
+.campo select[aria-invalid='true'] {
+  border: 2px solid #ff9b9b;
+}
+
+.ayuda {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* El error lleva el símbolo ⚠ y texto: no depende solo del color */
+.error {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ff9b9b;
+}
