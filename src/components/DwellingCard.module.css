@@ -1,20 +1,20 @@
 .tarjeta {
-  border: 1px solid #c9c9c9;
+  border: 1px solid var(--color-borde);
   border-radius: 8px;
   padding: 16px;
-  background: #fff;
+  background: var(--color-superficie);
   text-align: left;
 }
 
 .referencia {
   margin: 0;
   font-size: 1.05rem;
-  color: #222;
+  color: var(--color-texto);
 }
 
 .lugar {
   margin: 4px 0 12px;
-  color: #555;
+  color: var(--color-texto-suave);
 }
 
 .datos {
@@ -30,7 +30,7 @@
 }
 
 .datos dt {
-  color: #555;
+  color: var(--color-texto-suave);
 }
 
 .datos dd {
@@ -42,5 +42,5 @@
 .enlace {
   display: inline-block;
   font-weight: 600;
-  color: #0b4fcf;
+  color: #var(--color-primario);
 }

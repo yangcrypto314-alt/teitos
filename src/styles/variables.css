@@ -1,0 +1,19 @@
+:root {
+  /* Ocho roles de color (mismos nombres que las variables de Figma) */
+  --color-fondo: #f5f6f8;
+  --color-superficie: #ffffff;
+  --color-texto: #1f2430;
+  --color-texto-suave: #4a5160;
+  --color-primario: #0b4fcf;
+  --color-sobre-primario: #ffffff;
+  --color-borde: #c9ced6;
+  --color-error: #b00020;
+
+  /* Escala de espaciado */
+  --espacio-1: 4px;
+  --espacio-2: 8px;
+  --espacio-3: 16px;
+  --espacio-4: 24px;
+  --espacio-5: 32px;
+  --espacio-6: 48px;
+}

@@ -13,7 +13,7 @@
 
 .campo input[aria-invalid='true'],
 .campo select[aria-invalid='true'] {
-  border: 2px solid #ff9b9b;
+  border: 2px solid var(--color-error);
 }
 
 .ayuda {
@@ -27,5 +27,5 @@
   margin: 0;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #ff9b9b;
+  color: var(--color-error);
 }
