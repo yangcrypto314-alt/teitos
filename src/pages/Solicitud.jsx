@@ -42,11 +42,6 @@ export default function Solicitud() {
         <p>
           <Link to="/mi-solicitud">Ver mi solicitud</Link>
         </p>
-        <p>
-          <button type="button" onClick={() => dispatch({ tipo: 'vaciar' })}>
-            Empezar una solicitud nueva (solo para pruebas)
-          </button>
-        </p>
       </section>
     );
   }
