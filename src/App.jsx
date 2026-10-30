@@ -13,8 +13,11 @@ import NoEncontrada from './pages/NoEncontrada.jsx'
 function App() {
   return (
     <>
+      <a className="saltar" href="#contenido">
+        Saltar al contenido
+      </a>
       <Header />
-      <main className="contenedor">
+      <main id="contenido" className="contenedor" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<><Hero /><Inicio /></>} />
           <Route path="/viviendas" element={<Viviendas />} />

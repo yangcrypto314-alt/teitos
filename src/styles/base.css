@@ -1,7 +1,19 @@
-.cabecera {
-  padding-block: var(--espacio-4);
+/* Enlace para saltar al contenido: solo se ve al enfocarlo con Tab */
+.saltar {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10;
+  padding: var(--espacio-2) var(--espacio-3);
+  background: var(--color-primario);
+  color: var(--color-sobre-primario);
 }
 
-.hero {
-  padding-block: var(--espacio-5);
+.saltar:focus {
+  left: var(--espacio-2);
+  top: var(--espacio-2);
+}
+
+main:focus {
+  outline: none;
 }

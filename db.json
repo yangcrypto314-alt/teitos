@@ -21779,28 +21779,6 @@
       "descripcion": "Vivienda de 67 m² en València (Valencia). Tipología: 1 dormitorio."
     }
   ],
-  "solicitudes": [
-    {
-      "convocatoriaId": 6,
-      "viviendas": [
-        "34"
-      ],
-      "solicitante": {
-        "nombre": "awdasd",
-        "apellidos": "awdsd",
-        "documento": "39497943C",
-        "email": "awdawd@gmail.com",
-        "telefono": "622382893"
-      },
-      "hogar": {
-        "personas": 3,
-        "ingresos": 23234
-      },
-      "fechaEnvio": "2026-10-23",
-      "estado": "enviada",
-      "id": "fy66sNNYhD4",
-      "fechaModificacion": "2026-10-23"
-    }
-  ],
+  "solicitudes": [],
   "$schema": "./node_modules/json-server/schema.json"
 }
