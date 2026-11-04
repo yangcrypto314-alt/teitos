@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" role="img" aria-labelledby="title desc">
+    <title id="title">Ilustración de 26-6-COR-013</title>
+    <desc id="desc">Vivienda de 4 dormitorios y 84 metros cuadrados, 2ª planta, con ascensor. Acceso practicable. Eficiencia C.</desc>
+    <rect width="320" height="220" rx="16" fill="#EEF0E9"/>
+    <circle cx="276" cy="34" r="15" fill="#E9BE7A" opacity=".9"/>
+    <path d="M0 179c48-12 72-2 109-8 44-8 72-1 111 5 37 5 69-4 100-8v52H0z" fill="#D7E4D5"/>
+    <text x="18" y="24" fill="#61736B" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" letter-spacing=".8">26-6-COR-013</text>
+    <path d="M22 53L104 23l82 30" fill="none" stroke="#315C50" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="29" y="52" width="150" height="44" rx="3" fill="#DCE7E9" stroke="#315C50" stroke-width="1.5"/>
+    <path d="M29 69h150" stroke="#315C50" stroke-width="1" opacity=".18"/>
+    <rect x="54" y="61" width="10" height="9" rx="1.6" fill="#E9BE7A" stroke="#315C50" stroke-width="1"/><path d="M59 61v9" stroke="#315C50" stroke-width=".7" opacity=".55"/><rect x="84" y="61" width="10" height="9" rx="1.6" fill="#E9BE7A" stroke="#315C50" stroke-width="1"/><path d="M89 61v9" stroke="#315C50" stroke-width=".7" opacity=".55"/><rect x="114" y="61" width="10" height="9" rx="1.6" fill="#E9BE7A" stroke="#315C50" stroke-width="1"/><path d="M119 61v9" stroke="#315C50" stroke-width=".7" opacity=".55"/><rect x="144" y="61" width="10" height="9" rx="1.6" fill="#E9BE7A" stroke="#315C50" stroke-width="1"/><path d="M149 61v9" stroke="#315C50" stroke-width=".7" opacity=".55"/><rect x="54" y="79" width="10" height="9" rx="1.6" fill="#FFFFFF" stroke="#315C50" stroke-width="1"/><path d="M59 79v9" stroke="#315C50" stroke-width=".7" opacity=".55"/><rect x="84" y="79" width="10" height="9" rx="1.6" fill="#FFFFFF" stroke="#315C50" stroke-width="1"/><path d="M89 79v9" stroke="#315C50" stroke-width=".7" opacity=".55"/><rect x="114" y="79" width="10" height="9" rx="1.6" fill="#FFFFFF" stroke="#315C50" stroke-width="1"/><path d="M119 79v9" stroke="#315C50" stroke-width=".7" opacity=".55"/><rect x="144" y="79" width="10" height="9" rx="1.6" fill="#FFFFFF" stroke="#315C50" stroke-width="1"/><path d="M149 79v9" stroke="#315C50" stroke-width=".7" opacity=".55"/>
+    <rect x="97" y="71" width="17" height="25" rx="2" fill="#F4F5F0" stroke="#315C50" stroke-width="1.2"/>
+    <rect x="182" y="59" width="17" height="37" rx="2" fill="#C6D8CD" stroke="#315C50" stroke-width="1.5"/><path d="M187 74h7v22h-7z" fill="#FFFFFF" stroke="#315C50" stroke-width="1"/><circle cx="195" cy="67" r="1.5" fill="#315C50"/>
+    <path d="M134 96h26l9 8h18" fill="none" stroke="#1C7058" stroke-width="2" stroke-linecap="round"/>
+    <rect x="215" y="45" width="88" height="29" rx="8" fill="#FFFFFF" opacity=".9"/>
+    <text x="226" y="57" fill="#61736B" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="600">DORMITORIOS</text>
+    <text x="226" y="69" fill="#17352D" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700">4 hab.</text>
+    <rect x="215" y="80" width="88" height="29" rx="8" fill="#FFFFFF" opacity=".9"/>
+    <text x="226" y="92" fill="#61736B" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="600">SUPERFICIE</text>
+    <text x="226" y="104" fill="#17352D" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="700">84 m²</text>
+    <rect x="215" y="115" width="88" height="29" rx="8" fill="#FFFFFF" opacity=".9"/>
+    <text x="226" y="127" fill="#61736B" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="600">UBICACIÓN</text>
+    <text x="226" y="139" fill="#17352D" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700">2ª planta</text>
+    <rect x="215" y="151" width="88" height="44" rx="8" fill="#FFFFFF" opacity=".9"/>
+    <circle cx="269" cy="179" r="12" fill="#E5F1EB"/><circle cx="269" cy="174" r="2" fill="#1C7058"/><path d="M269 177v6l5 3m-5-5h5m-8 7a6 6 0 1 0 12 0" fill="none" stroke="#1C7058" stroke-width="1.6" stroke-linecap="round"/>
+    <text x="226" y="169" fill="#61736B" font-family="Inter,Arial,sans-serif" font-size="7.5" font-weight="700">CON ASCENSOR</text>
+    <text x="226" y="183" fill="#61736B" font-family="Inter,Arial,sans-serif" font-size="7" font-weight="600">PRACTICABLE</text>
+    <rect x="18" y="190" width="29" height="18" rx="6" fill="#94A856"/>
+    <text x="32.5" y="203" text-anchor="middle" fill="#FFFFFF" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700">C</text>
+    <text x="53" y="203" fill="#61736B" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="600">EFICIENCIA</text>
+  </svg>

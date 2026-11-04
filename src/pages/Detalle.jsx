@@ -41,11 +41,48 @@ export default function Detalle() {
   const motivo = yaAnadida ? null : motivoRechazo(estado, resumen);
 
   return (
-    <section className={styles.ficha}>
-      <h2 className={styles.titulo}>{vivienda.referencia}</h2>
-      <p className={styles.lugar}>
-        {vivienda.municipio} ({vivienda.provincia}) · CP {vivienda.codigoPostal}
-      </p>
+    <section className={styles.pagina}>
+      <Link className={styles.volver} to="/viviendas">← Volver a resultados</Link>
+      <div className={styles.ficha}>
+        <div className={styles.ilustracion}>
+          <span className={styles.ilustracionReferencia}>{vivienda.referencia}</span>
+          <img
+            src={`/ilustraciones/${vivienda.id}.svg`}
+            alt={`Ilustración de vivienda ${vivienda.referencia}`}
+          />
+        </div>
+        <div className={styles.resumen}>
+          <div className={styles.etiquetas}>
+            <span className={styles.estado}>{vivienda.adjudicada ? 'Adjudicada' : 'Disponible'}</span>
+            <span>{vivienda.referencia}</span>
+          </div>
+          <h1 className={styles.titulo}>
+            Vivienda en {vivienda.municipio}
+          </h1>
+          <p className={styles.lugar}>
+            {vivienda.provincia} · {vivienda.dormitorios} {vivienda.dormitorios === 1 ? 'dormitorio' : 'dormitorios'}
+          </p>
+          <p className={styles.renta}>
+            {vivienda.renta === null || vivienda.renta === undefined
+              ? formatearRenta(vivienda.renta)
+              : `${vivienda.renta.toLocaleString('es-ES')} €`}
+            {vivienda.renta !== null && vivienda.renta !== undefined && (
+              <span> / mes</span>
+            )}
+          </p>
+          <dl className={styles.datos}>
+            <div><dt>Superficie</dt><dd>{vivienda.superficie} m²</dd></div>
+            <div>
+              <dt>Planta</dt>
+              <dd>{vivienda.planta} · {vivienda.ascensor ? 'con ascensor' : 'sin ascensor'}</dd>
+            </div>
+            <div><dt>Tipo</dt><dd>{vivienda.tipologia}</dd></div>
+          </dl>
+          <p className={styles.accesibilidad}>
+            Accesibilidad {textoAccesibilidad(vivienda.accesibilidad).toLowerCase()}
+          </p>
+        </div>
+      </div>
 
       {vivienda.adjudicada && (
         <p className={styles.aviso} role="status">
@@ -53,45 +90,35 @@ export default function Detalle() {
         </p>
       )}
 
-      <dl className={styles.datos}>
-        <div><dt>Tipología</dt><dd>{vivienda.tipologia}</dd></div>
-        <div><dt>Dormitorios</dt><dd>{vivienda.dormitorios}</dd></div>
-        <div><dt>Superficie</dt><dd>{vivienda.superficie} m²</dd></div>
-        <div><dt>Renta</dt><dd>{formatearRenta(vivienda.renta)}</dd></div>
-        <div>
-          <dt>Planta</dt>
-          <dd>
-            {vivienda.planta} · {vivienda.ascensor ? 'con ascensor' : 'sin ascensor'}
-          </dd>
-        </div>
-        <div>
-          <dt>Accesibilidad</dt>
-          <dd>{textoAccesibilidad(vivienda.accesibilidad)}</dd>
-        </div>
-        <div>
-          <dt>Eficiencia energética</dt>
-          <dd>{vivienda.eficiencia}</dd>
-        </div>
-        <div>
-          <dt>Convocatoria</dt>
-          <dd>
-            {convocatoria
-              ? `${convocatoria.codigo} (${convocatoria.estado})`
-              : 'Sin dato'}
-          </dd>
-        </div>
-      </dl>
-
-      <p>{vivienda.descripcion}</p>
+      <div className={styles.detalles}>
+        <section className={styles.caracteristicas}>
+          <h2>Sobre esta vivienda</h2>
+          <p>
+            {vivienda.descripcion ||
+              `Vivienda de ${vivienda.superficie} m² en ${vivienda.municipio}, ${vivienda.provincia}.`}
+          </p>
+          <dl className={styles.caracteristicasGrid}>
+            <div><dt>Dormitorios</dt><dd>{vivienda.dormitorios}</dd></div>
+            <div><dt>Accesibilidad</dt><dd>{textoAccesibilidad(vivienda.accesibilidad)}</dd></div>
+            <div><dt>Eficiencia energética</dt><dd>{vivienda.eficiencia}</dd></div>
+            <div><dt>Código postal</dt><dd>{vivienda.codigoPostal}</dd></div>
+          </dl>
+        </section>
+        <aside className={styles.convocatoria}>
+          <h2>Convocatoria</h2>
+          <strong>{convocatoria ? convocatoria.codigo : 'Sin dato'}</strong>
+          <p>{convocatoria ? `${convocatoria.provincia} · ${convocatoria.estado}` : 'No hay información disponible.'}</p>
+        </aside>
+      </div>
 
       <div className={styles.acciones}>
         {!solicitable ? (
-          <span>
+          <p>
             No se puede solicitar: la vivienda está adjudicada o su convocatoria no está abierta.
-          </span>
+          </p>
         ) : yaAnadida ? (
           <>
-            <span role="status">Añadida a tu solicitud.</span>
+            <p role="status">Añadida a tu solicitud.</p>
             <Link to="/solicitud">Ver mi solicitud</Link>
             <button
               type="button"
@@ -101,7 +128,7 @@ export default function Detalle() {
             </button>
           </>
         ) : motivo ? (
-          <span role="status">{motivo}</span>
+          <p role="status">{motivo}</p>
         ) : (
           <button
             type="button"
@@ -110,7 +137,6 @@ export default function Detalle() {
             Añadir a mi solicitud
           </button>
         )}
-        <Link to="/viviendas">Volver al listado</Link>
       </div>
     </section>
   );

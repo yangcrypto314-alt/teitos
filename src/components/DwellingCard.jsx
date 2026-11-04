@@ -10,12 +10,20 @@ export default function DwellingCard({ vivienda }) {
 
   return (
     <article className={styles.tarjeta}>
-      <h3 className={styles.referencia}>{referencia}</h3>
-      <p className={styles.lugar}>{municipio} ({provincia})</p>
+      <div className={styles.imagen}>
+        <span className={styles.imagenReferencia}>{referencia}</span>
+        <img
+          src={`/ilustraciones/${id}.svg`}         
+          alt={`Ilustración de vivienda ${referencia}`}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <div className={styles.contenido}>
+        <p className={styles.lugar}>{municipio} · {provincia}</p>
+        <p className={styles.tipologia}>{tipologia} · {superficie} m²</p>
+        <p className={styles.renta}>{formatearRenta(renta)}<span> / mes</span></p>
       <dl className={styles.datos}>
-        <div><dt>Tipología</dt><dd>{tipologia}</dd></div>
-        <div><dt>Superficie</dt><dd>{superficie} m²</dd></div>
-        <div><dt>Renta</dt><dd>{formatearRenta(renta)}</dd></div>
         <div>
           <dt>Planta</dt>
           <dd>{planta} · {ascensor ? 'con ascensor' : 'sin ascensor'}</dd>
@@ -25,6 +33,7 @@ export default function DwellingCard({ vivienda }) {
       <Link className={styles.enlace} to={`/viviendas/${id}`}>
         Ver vivienda {referencia}
       </Link>
+      </div>
     </article>
   );
 }
