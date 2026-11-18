@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1044" height="62" viewBox="0 0 1044 62"><title>Botón</title>
+<g id="Estado=Normal" transform="translate(8 8)"><rect width="180" height="46" rx="12" fill="#1C7058"/><text x="90.0" y="28.0" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Buscar vivienda</text></g>
+<g id="Estado=Hover" transform="translate(220 8)"><rect width="180" height="46" rx="12" fill="#155641"/><text x="90.0" y="28.0" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Buscar vivienda</text></g>
+<g id="Estado=Foco" transform="translate(432 8)"><rect width="180" height="46" rx="12" fill="#1C7058"/><rect x="-4" y="-4" width="188" height="54" rx="16" fill="none" stroke="#F2C078" stroke-width="3"/><text x="90.0" y="28.0" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Buscar vivienda</text></g>
+<g id="Estado=Desactivado" transform="translate(644 8)"><rect width="180" height="46" rx="12" fill="#E5E9E6"/><text x="90.0" y="28.0" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#6F7B75" text-anchor="middle">Buscar vivienda</text></g>
+<g id="Estado=Error" transform="translate(856 8)"><rect width="180" height="46" rx="12" fill="#FCEBE8" stroke="#B33A32"/><text x="90.0" y="28.0" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="700" fill="#B33A32" text-anchor="middle">Buscar vivienda</text></g>
+</svg>

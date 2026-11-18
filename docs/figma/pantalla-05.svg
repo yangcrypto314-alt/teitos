@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="920" viewBox="0 0 1440 920"><title>05 · MI SOLICITUD · DESKTOP</title><defs><style>text{font-family:Inter,Arial,sans-serif}</style></defs>
+
+<rect x="0" y="0" width="1440" height="920" rx="18" fill="#F4F5F0" stroke="#D2D9D3" stroke-width="1.5"/>
+<rect x="0" y="0" width="1440" height="78" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="44" y="21" width="38" height="38" rx="12" fill="#1C7058" stroke="none" stroke-width="1"/>
+<path d="M52 36L63 28L74 36M54 37V49H72V37M60 49V42H66V49" fill="none" stroke="#D9E9A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="94" y="47" font-size="23" fill="#17352D" font-weight="700" text-anchor="start" >teitos</text>
+<text x="330" y="47" font-size="14" fill="#17352D" font-weight="600" text-anchor="start" >Viviendas</text>
+<text x="438" y="47" font-size="14" fill="#17352D" font-weight="600" text-anchor="start" >Convocatorias</text>
+<text x="584" y="47" font-size="14" fill="#17352D" font-weight="600" text-anchor="start" >Cómo funciona</text>
+<text x="1174" y="47" font-size="14" fill="#17352D" font-weight="600" text-anchor="start" >Mi solicitud</text>
+<rect x="1284" y="19" width="116" height="40" rx="11" fill="#E5F1EB" stroke="none" stroke-width="1"/>
+<text x="1342" y="44" font-size="14" fill="#1C7058" font-weight="700" text-anchor="middle" >Acceder</text>
+<path d="M0 78H1440" stroke="#DCE4DE" stroke-width="1"/>
+<text x="96" y="140" font-size="34" fill="#17352D" font-weight="700" text-anchor="start" >Mi solicitud</text>
+<text x="96" y="171" font-size="15" fill="#61736B" font-weight="400" text-anchor="start" >Consulta el estado y mantén tus datos al día.</text>
+<rect x="96" y="204" width="1248" height="196" rx="16" fill="#FFFFFF" stroke="#DCE4DE" stroke-width="1"/>
+<rect x="126" y="232" width="84" height="28" rx="14" fill="#E5F1EB" stroke="none" stroke-width="1"/>
+<text x="168" y="251" font-size="12" fill="#1C7058" font-weight="600" text-anchor="middle" >ENVIADA</text>
+<text x="126" y="287" font-size="23" fill="#17352D" font-weight="700" text-anchor="start" >Solicitud · 26-6-BCN</text>
+<text x="126" y="319" font-size="14" fill="#61736B" font-weight="400" text-anchor="start" >Presentada el 18 de septiembre de 2026</text>
+<text x="126" y="360" font-size="13" fill="#61736B" font-weight="600" text-anchor="start" >Viviendas preferidas</text>
+<text x="126" y="383" font-size="15" fill="#17352D" font-weight="600" text-anchor="start" >26-6-BCN-773  ·  26-7-OUR-478</text>
+<rect x="1040" y="256" width="174" height="46" rx="12" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<text x="1127" y="284" font-size="15" fill="#1C7058" font-weight="700" text-anchor="middle" >Ver solicitud</text>
+<rect x="1230" y="256" width="82" height="46" rx="12" fill="#F7F8F5" stroke="#DCE4DE" stroke-width="1"/>
+<text x="1271" y="285" font-size="22" fill="#17352D" font-weight="700" text-anchor="middle" >···</text>
+<text x="96" y="456" font-size="24" fill="#17352D" font-weight="700" text-anchor="start" >Seguimiento</text>
+<path d="M140 520H140" stroke="#DCE4DE" stroke-width="3"/>
+<circle cx="140" cy="521" r="10" fill="#1C7058" stroke="#1C7058" stroke-width="3"/>
+<text x="176" y="526" font-size="17" fill="#17352D" font-weight="700" text-anchor="start" >Solicitud recibida</text>
+<text x="176" y="551" font-size="13" fill="#1C7058" font-weight="600" text-anchor="start" >18 sep 2026 · 10:42</text>
+<text x="176" y="575" font-size="14" fill="#61736B" font-weight="400" text-anchor="start" >Hemos recibido correctamente tu solicitud.</text>
+<circle cx="140" cy="641" r="10" fill="#1C7058" stroke="#1C7058" stroke-width="3"/>
+<text x="176" y="646" font-size="17" fill="#17352D" font-weight="700" text-anchor="start" >Revisión de requisitos</text>
+<text x="176" y="671" font-size="13" fill="#1C7058" font-weight="600" text-anchor="start" >En curso</text>
+<text x="176" y="695" font-size="14" fill="#61736B" font-weight="400" text-anchor="start" >Comprobaremos que la documentación esté completa.</text>
+<circle cx="140" cy="761" r="10" fill="#fff" stroke="#DCE4DE" stroke-width="3"/>
+<text x="176" y="766" font-size="17" fill="#17352D" font-weight="700" text-anchor="start" >Adjudicación</text>
+<text x="176" y="791" font-size="13" fill="#1C7058" font-weight="600" text-anchor="start" >Pendiente</text>
+<text x="176" y="815" font-size="14" fill="#61736B" font-weight="400" text-anchor="start" >Te avisaremos cuando se publiquen los resultados.</text>
+<rect x="870" y="444" width="474" height="226" rx="16" fill="#FFFFFF" stroke="#DCE4DE" stroke-width="1"/>
+<text x="902" y="484" font-size="18" fill="#17352D" font-weight="700" text-anchor="start" >¿Necesitas hacer un cambio?</text>
+<text x="902" y="516" font-size="14" fill="#61736B" font-weight="400" text-anchor="start" >Puedes modificar o retirar la solicitud</text>
+<text x="902" y="539" font-size="14" fill="#61736B" font-weight="400" text-anchor="start" >mientras el plazo esté abierto.</text>
+<rect x="902" y="568" width="170" height="44" rx="12" fill="#1C7058" stroke="none" stroke-width="1"/>
+<text x="987" y="595" font-size="15" fill="#fff" font-weight="700" text-anchor="middle" >Editar solicitud</text>
+<text x="1092" y="596" font-size="14" fill="#B33A32" font-weight="700" text-anchor="start" >Retirar solicitud</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844"><title>07 · BUSCADOR · MÓVIL</title><defs><style>text{font-family:Inter,Arial,sans-serif}</style></defs>
+
+<rect x="0" y="0" width="390" height="844" rx="18" fill="#F4F5F0" stroke="#D2D9D3" stroke-width="1.5"/>
+<rect x="0" y="0" width="390" height="66" rx="0" fill="#FFFFFF" stroke="none" stroke-width="1"/>
+<rect x="44" y="17" width="38" height="38" rx="12" fill="#1C7058" stroke="none" stroke-width="1"/>
+<path d="M52 32L63 24L74 32M54 33V45H72V33M60 45V38H66V45" fill="none" stroke="#D9E9A8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="94" y="42" font-size="23" fill="#17352D" font-weight="700" text-anchor="start" >teitos</text>
+<text x="348" y="42" font-size="22" fill="#17352D" font-weight="500" text-anchor="middle" >☰</text>
+<text x="24" y="111" font-size="28" fill="#17352D" font-weight="700" text-anchor="start" >Encuentra tu</text>
+<text x="24" y="145" font-size="28" fill="#17352D" font-weight="700" text-anchor="start" >próximo hogar</text>
+<rect x="24" y="168" width="342" height="48" rx="12" fill="#FFFFFF" stroke="#DCE4DE" stroke-width="1"/>
+<text x="44" y="198" font-size="14" fill="#87948E" font-weight="400" text-anchor="start" >⌕  Municipio o referencia</text>
+<rect x="24" y="234" width="342" height="228" rx="16" fill="#FFFFFF" stroke="#DCE4DE" stroke-width="1"/>
+<text x="44" y="267" font-size="17" fill="#17352D" font-weight="700" text-anchor="start" >Filtros</text>
+<text x="44" y="282" font-size="13" fill="#61736B" font-weight="600" text-anchor="start" >Provincia</text>
+<rect x="44" y="293" width="302" height="48" rx="10" fill="#FFFFFF" stroke="#DCE4DE" stroke-width="1"/>
+<text x="58" y="323" font-size="14" fill="#17352D" font-weight="500" text-anchor="start" >Todas</text>
+<text x="326" y="323" font-size="16" fill="#61736B" font-weight="500" text-anchor="middle" >⌄</text>
+<text x="44" y="355" font-size="13" fill="#61736B" font-weight="600" text-anchor="start" >Personas en el hogar</text>
+<rect x="44" y="366" width="302" height="48" rx="10" fill="#FFFFFF" stroke="#DCE4DE" stroke-width="1"/>
+<text x="58" y="396" font-size="14" fill="#17352D" font-weight="500" text-anchor="start" >Selecciona</text>
+<text x="326" y="396" font-size="16" fill="#61736B" font-weight="500" text-anchor="middle" >⌄</text>
+<rect x="44" y="414" width="302" height="40" rx="12" fill="#1C7058" stroke="none" stroke-width="1"/>
+<text x="195" y="439" font-size="15" fill="#fff" font-weight="700" text-anchor="middle" >Mostrar resultados</text>
+<text x="24" y="504" font-size="16" fill="#17352D" font-weight="700" text-anchor="start" >642 viviendas</text>
+<text x="366" y="504" font-size="12" fill="#1C7058" font-weight="700" text-anchor="end" >Ordenar</text>
+<rect x="24" y="526" width="342" height="114" rx="16" fill="#FFFFFF" stroke="#DCE4DE" stroke-width="1"/>
+<rect x="34" y="536" width="93" height="94" rx="14" fill="#DCEBDD" stroke="none" stroke-width="1"/>
+<circle cx="106.54" cy="557.62" r="8.37" fill="#F5CF86"/>
+<path d="M34 603.68 Q60.040000000000006 571.72 85.15 602.74 T127 592.4 V630H34Z" fill="#B9D3B5"/>
+<rect x="60.040000000000006" y="564.2" width="39.059999999999995" height="52.64000000000001" rx="5" fill="#F6F4EA" stroke="none" stroke-width="1"/>
+<path d="M52.040000000000006 569.2L79.57000000000001 538.2L107.1 569.2Z" fill="#547567"/>
+<rect x="74.04" y="582.2" width="14" height="20" rx="3" fill="#91B4AC" stroke="none" stroke-width="1"/>
+<rect x="75.39333333333335" y="582.2" width="14" height="20" rx="3" fill="#91B4AC" stroke="none" stroke-width="1"/>
+<rect x="76.74666666666667" y="582.2" width="14" height="20" rx="3" fill="#91B4AC" stroke="none" stroke-width="1"/>
+<rect x="74.04" y="620.2" width="14" height="20" rx="3" fill="#91B4AC" stroke="none" stroke-width="1"/>
+<rect x="75.39333333333335" y="620.2" width="14" height="20" rx="3" fill="#91B4AC" stroke="none" stroke-width="1"/>
+<rect x="76.74666666666667" y="620.2" width="14" height="20" rx="3" fill="#91B4AC" stroke="none" stroke-width="1"/>
+<rect x="76.8358" y="577.84" width="22" height="39" rx="3" fill="#8D9F91" stroke="none" stroke-width="1"/>
+<text x="142" y="559" font-size="10" fill="#61736B" font-weight="600" text-anchor="start" >26-7-OUR-478</text>
+<text x="142" y="583" font-size="13" fill="#17352D" font-weight="700" text-anchor="start" >O Barco de Valdeorras</text>
+<text x="142" y="609" font-size="14" fill="#1C7058" font-weight="700" text-anchor="start" >530 €/mes</text>
+<text x="142" y="627" font-size="11" fill="#1C7058" font-weight="600" text-anchor="start" >Ver vivienda →</text>
+<rect x="24" y="656" width="342" height="114" rx="16" fill="#FFFFFF" stroke="#DCE4DE" stroke-width="1"/>
+<rect x="34" y="666" width="93" height="94" rx="14" fill="#E5E8D8" stroke="none" stroke-width="1"/>
+<circle cx="106.54" cy="687.62" r="8.37" fill="#F5CF86"/>
+<path d="M34 733.68 Q60.040000000000006 701.72 85.15 732.74 T127 722.4 V760H34Z" fill="#B9D3B5"/>
+<rect x="60.040000000000006" y="694.2" width="39.059999999999995" height="52.64000000000001" rx="5" fill="#F6F4EA" stroke="none" stroke-width="1"/>
+<path d="M52.040000000000006 699.2L79.57000000000001 668.2L107.1 699.2Z" fill="#547567"/>
+<rect x="74.04" y="712.2" width="14" height="20" rx="3" fill="#C6D8CE" stroke="none" stroke-width="1"/>
+<rect x="75.39333333333335" y="712.2" width="14" height="20" rx="3" fill="#C6D8CE" stroke="none" stroke-width="1"/>
+<rect x="76.74666666666667" y="712.2" width="14" height="20" rx="3" fill="#C6D8CE" stroke="none" stroke-width="1"/>
+<rect x="74.04" y="750.2" width="14" height="20" rx="3" fill="#C6D8CE" stroke="none" stroke-width="1"/>
+<rect x="75.39333333333335" y="750.2" width="14" height="20" rx="3" fill="#C6D8CE" stroke="none" stroke-width="1"/>
+<rect x="76.74666666666667" y="750.2" width="14" height="20" rx="3" fill="#C6D8CE" stroke="none" stroke-width="1"/>
+<rect x="76.8358" y="707.84" width="22" height="39" rx="3" fill="#8D9F91" stroke="none" stroke-width="1"/>
+<text x="142" y="689" font-size="10" fill="#61736B" font-weight="600" text-anchor="start" >26-6-BCN-773</text>
+<text x="142" y="713" font-size="13" fill="#17352D" font-weight="700" text-anchor="start" >Santa Coloma de Gramenet</text>
+<text x="142" y="739" font-size="14" fill="#1C7058" font-weight="700" text-anchor="start" >550 €/mes</text>
+<text x="142" y="757" font-size="11" fill="#1C7058" font-weight="600" text-anchor="start" >Ver vivienda →</text>
+<text x="195" y="812" font-size="12" fill="#1C7058" font-weight="600" text-anchor="middle" >Inicio     Buscar     Mi solicitud</text>
+</svg>
