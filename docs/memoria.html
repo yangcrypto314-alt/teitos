@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Memoria · Teitos</title>
+<style>
+  @page { size: A4; margin: 18mm 18mm 16mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Inter, Arial, sans-serif; color: #17352d; font-size: 10.5pt; line-height: 1.45; margin: 0; }
+  h1 { font-family: Georgia, serif; font-size: 26pt; margin: 0 0 4px; color: #1c7058; }
+  h2 { font-size: 14pt; margin: 18px 0 6px; padding-bottom: 3px; border-bottom: 2px solid #1c7058; break-after: avoid; }
+  h3 { font-size: 11pt; margin: 12px 0 4px; break-after: avoid; }
+  p { margin: 0 0 7px; }
+  ul { margin: 0 0 8px; padding-left: 18px; }
+  li { margin-bottom: 2px; }
+  code { font-family: Consolas, monospace; font-size: 9.5pt; background: #eef2ee; padding: 0 3px; border-radius: 3px; }
+  pre { font-family: Consolas, monospace; font-size: 9pt; background: #17352d; color: #e4f0e9; padding: 8px 10px; border-radius: 6px; margin: 4px 0 8px; white-space: pre-wrap; }
+  table { width: 100%; border-collapse: collapse; margin: 4px 0 10px; font-size: 9.5pt; break-inside: avoid; }
+  th { background: #1c7058; color: #fff; text-align: left; padding: 4px 6px; }
+  td { border-bottom: 1px solid #dce4de; padding: 4px 6px; vertical-align: top; }
+  .portada { border-left: 6px solid #1c7058; padding: 6px 0 6px 14px; margin-bottom: 14px; }
+  .sub { color: #61736b; }
+  .ok { color: #1c7058; font-weight: 700; }
+  .no { color: #b33a32; font-weight: 700; }
+  .caja { background: #f4f5f0; border: 1px solid #dce4de; border-radius: 6px; padding: 8px 10px; margin: 6px 0 10px; break-inside: avoid; }
+  .salto { break-before: page; }
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <h1>Teitos</h1>
+  <p class="sub">Memoria del Proyecto 1 · PMDM · Portal de alquiler asequible (SPA en React)</p>
+  <p class="sub">Autor/a: <b>[Nombre y apellidos]</b> · Repositorio: <b>[URL del repositorio]</b> · Web publicada: <b>[URL pública]</b> · Figma: <b>[URL de Figma]</b></p>
+</div>
+
+<h2>1. Qué está hecho y qué no</h2>
+<table>
+  <tr><th style="width:34%">Requisito</th><th style="width:10%">Estado</th><th>Cómo se ha resuelto</th></tr>
+  <tr><td>API local con json-server 1.0.0-beta.15</td><td class="ok">Hecho</td><td>Versión fijada en <code>devDependencies</code>. Puerto 3001 con <code>/convocatorias</code>, <code>/viviendas</code> y <code>/solicitudes</code>.</td></tr>
+  <tr><td><code>db.original.json</code> intacto y <code>npm run reset-datos</code></td><td class="ok">Hecho</td><td><code>reset-datos.cjs</code> copia el original sobre <code>db.json</code> y añade <code>solicitudes: []</code>, porque si no existe el primer POST da 404.</td></tr>
+  <tr><td><code>npm start</code> arranca web y servidor</td><td class="ok">Hecho</td><td>Con <code>concurrently</code>: Vite (5173) + json-server (3001).</td></tr>
+  <tr><td>URL del servidor una sola vez en <code>api/</code></td><td class="ok">Hecho</td><td><code>api/cliente.js</code> con la función <code>pedir()</code>. Ningún componente hace <code>fetch</code>.</td></tr>
+  <tr><td>Rutas (React Router 7)</td><td class="ok">Hecho</td><td><code>/</code>, <code>/viviendas</code>, <code>/viviendas/:id</code>, <code>/solicitud</code>, <code>/mi-solicitud</code> y la 404 (<code>*</code>).</td></tr>
+  <tr><td>Hooks propios con tres estados y <code>respuesta.ok</code></td><td class="ok">Hecho</td><td><code>useViviendas</code>, <code>useConvocatorias</code>, <code>useVivienda</code> y <code>useMiSolicitud</code>.</td></tr>
+  <tr><td>Búsqueda sin mayúsculas, tildes ni eñes</td><td class="ok">Hecho</td><td><code>utils/texto.js → normalizar()</code> con <code>normalize('NFD')</code>.</td></tr>
+  <tr><td>Orden, adjudicadas fuera, paginación</td><td class="ok">Hecho</td><td>Orden por renta y superficie. Las adjudicadas se filtran en el hook. Paginación numerada de 12 en 12.</td></tr>
+  <tr><td>Cuatro filtros + regla de acceso en su fichero</td><td class="ok">Hecho</td><td>Provincia y accesibilidad comparan un campo. Personas e ingresos llaman a <code>reglas/acceso.js → puedeAcceder()</code>.</td></tr>
+  <tr><td>Solicitud por pasos, preferencias y modal</td><td class="ok">Hecho</td><td>4 pasos con validación al vuelo y al avanzar. Hasta 3 viviendas ordenables. <code>&lt;dialog&gt;</code> nativo.</td></tr>
+  <tr><td>POST, consulta, PUT con plazo abierto y DELETE</td><td class="ok">Hecho</td><td>«Mi solicitud» solo permite modificar o retirar si la convocatoria está <code>abierta</code>.</td></tr>
+  <tr><td>useState, useReducer, Context y localStorage</td><td class="ok">Hecho</td><td><code>SolicitudProvider</code>: la selección y el borrador sobreviven a la recarga.</td></tr>
+  <tr><td>CSS Modules y variables con nombres de Figma</td><td class="ok">Hecho</td><td><code>styles/variables.css</code> con los 8 roles. Sin librerías de estilos.</td></tr>
+  <tr><td>Teclado, foco visible, no solo color, 390 px</td><td class="ok">Hecho</td><td>Anillo de foco, «Saltar al contenido», iconos + texto en los estados. Sin scroll horizontal a 390 px (comprobado en todas las rutas).</td></tr>
+  <tr><td><code>npm run build</code> y URL pública</td><td class="ok">Hecho</td><td>Build sin errores. Despliegue automático en GitHub Pages con <code>.github/workflows/deploy.yml</code>.</td></tr>
+  <tr><td>Filtros en la URL compartible</td><td class="ok">Hecho</td><td><code>useSearchParams</code>: <code>/viviendas?provincia=Lugo&amp;personas=2&amp;ingresos=24000</code>.</td></tr>
+  <tr><td>Datos en la versión publicada</td><td class="no">No</td><td>Sin servidor no hay datos (ver apartado 7). No se ha montado una API en la nube.</td></tr>
+  <tr><td>Arrastrar para ordenar preferencias</td><td class="no">No</td><td>Se ordena con botones Subir/Bajar, que además se pueden usar con el teclado.</td></tr>
+</table>
+
+<h2>2. Cómo se arranca</h2>
+<p>Hace falta Node.js 20 o superior. En la carpeta del proyecto:</p>
+<pre>npm install          # instala dependencias (json-server 1.0.0-beta.15 incluido)
+npm run reset-datos  # db.original.json → db.json con solicitudes vacía
+npm start            # web en http://localhost:5173 y API en http://localhost:3001</pre>
+<p>Otros comandos: <code>npm run build</code> genera <code>dist/</code> y <code>npm run lint</code> revisa el código con oxlint.</p>
+
+<h2>3. Decisiones tomadas</h2>
+<ul>
+  <li><b>Se piden las 1.200 viviendas una vez y se filtra en el cliente.</b> json-server no aplica la regla de acceso (ingresos y personas no son un campo) ni la búsqueda sin tildes. Filtrar en memoria permite combinar todo y es instantáneo (ver apartado 6).</li>
+  <li><b>Los filtros viven en la URL.</b> La búsqueda se puede pegar en un correo, y los botones atrás/adelante del navegador funcionan. Se usa <code>replace</code> para no llenar el historial con cada tecla.</li>
+  <li><b>Unión manual en vez de <code>_embed</code>.</b> <code>useVivienda</code> pide la vivienda y después su convocatoria. Si la convocatoria falla, la vivienda se muestra igualmente.</li>
+  <li><b>Tipos de id.</b> <code>id</code> es texto y <code>convocatoriaId</code> es número, así que se comparan con <code>String()</code>.</li>
+  <li><b>Una solicitud = una convocatoria, máximo 3 viviendas.</b> La función <code>motivoRechazo()</code> del reducer explica al usuario por qué no se puede añadir.</li>
+  <li><b>Modal con <code>&lt;dialog&gt;</code> nativo.</b> Atrapa el foco, se cierra con Esc y devuelve el foco sin depender de librerías.</li>
+  <li><b>Patrón <code>activo</code> en los hooks.</b> Evita actualizar el estado de un componente desmontado. <code>recargar()</code> incrementa una versión para repetir la petición.</li>
+  <li><b>«Sin dato» ≠ «Sin adaptar».</b> <code>accesibilidad: null</code> se muestra como «Dato de accesibilidad no disponible».</li>
+</ul>
+
+<h2 class="salto">4. Diseño frente a implementación</h2>
+<table>
+  <tr><th style="width:24%">Figma</th><th style="width:24%">React</th><th>Diferencias y comentarios</th></tr>
+  <tr><td>Botón (5 estados)</td><td><code>Boton</code></td><td>Variantes <code>primario</code>, <code>secundario</code> y <code>peligro</code>, más la prop <code>error</code>. Hover, foco y desactivado por CSS.</td></tr>
+  <tr><td>Campo / selector</td><td><code>CampoTexto</code></td><td>Etiqueta, ayuda y error enlazados con <code>aria-describedby</code>.</td></tr>
+  <tr><td>Mensaje de error</td><td><code>MensajeError</code></td><td>Igual que en Figma: icono «!» + texto sobre fondo rojo suave.</td></tr>
+  <tr><td>Tarjeta de vivienda</td><td><code>DwellingCard</code></td><td>En web se pasó de fila horizontal a rejilla de tarjetas, porque caben más resultados por pantalla. Añade un aviso para la 4.ª planta o más sin ascensor.</td></tr>
+  <tr><td>Tarjeta de convocatoria</td><td><code>CallCard</code></td><td>Color e icono por estado. Añade «viviendas libres» y «Todas adjudicadas» (26-6-MAD).</td></tr>
+  <tr><td>Paginación</td><td><code>Pagination</code></td><td>‹ 1 … 4 5 6 … 54 ›. La página activa va subrayada además de en color.</td></tr>
+  <tr><td>Estados del buscador</td><td><code>Estado</code></td><td><code>tipo="cargando"</code> (esqueleto), <code>"error"</code> (Reintentar) y <code>"vacio"</code> (Limpiar filtros).</td></tr>
+  <tr><td>Pantallas 01–05 (1440)</td><td>Páginas</td><td>Misma estructura. Inicio añade la sección «Cómo funciona» y la lista de convocatorias cerradas/resueltas.</td></tr>
+  <tr><td>Pantallas 06–08 (390)</td><td>CSS responsive</td><td>Menú hamburguesa y barra inferior Inicio · Buscar · Mi solicitud, como en Figma.</td></tr>
+</table>
+<p>Los colores, tipografías, radios (16 px tarjetas, 10 px campos) y el espaciado (4–64 px) salen de las variables de Figma con el mismo nombre en <code>variables.css</code>.</p>
+
+<h3>Casos de datos obligatorios</h3>
+<table>
+  <tr><th style="width:30%">Caso</th><th>Cómo se ve</th></tr>
+  <tr><td>773 · municipio de 24 caracteres</td><td>«Santa Coloma de Gramenet» se parte en dos líneas sin desbordar la tarjeta ni el título.</td></tr>
+  <tr><td>478 · sin dato de accesibilidad</td><td>«Sin dato» / «Dato de accesibilidad no disponible», nunca «Sin adaptar».</td></tr>
+  <tr><td>926 · 4.ª planta sin ascensor</td><td>«▲ 4.ª planta · sin ascensor» en la tarjeta y aviso en el detalle.</td></tr>
+  <tr><td>26-6-MAD · todo adjudicado</td><td>Tarjeta «Resuelta», «Libres: Todas adjudicadas» y sin botón Consultar.</td></tr>
+</table>
+
+<h2>5. Los tres estados</h2>
+<p>Cada hook devuelve <code>cargando</code>, <code>error</code> y <code>vacio</code>, y la página elige qué pintar con el componente <code>Estado</code>:</p>
+<div class="caja">
+<b>Cargando:</b> tarjetas esqueleto grises con brillo animado (se desactiva con <code>prefers-reduced-motion</code>) y texto oculto «Cargando…» para el lector de pantalla (<code>role="status"</code>).<br>
+<b>Error:</b> etiqueta «ERROR DEL SERVIDOR», explicación y botón <b>Reintentar</b>, que llama a <code>recargar()</code> y repite la petición sin recargar la página (<code>role="alert"</code>). Un 404 en el detalle se trata aparte: «La vivienda X no existe».<br>
+<b>Vacío:</b> «No hay resultados» con el botón <b>Limpiar filtros</b>, que borra los parámetros de la URL.
+</div>
+<p>Prueba realizada: se forzó un fallo de <code>fetch</code> y apareció el estado de error. Al restaurar la red, «Reintentar» cargó las 979 viviendas libres.</p>
+
+<h2>6. Medida de rendimiento propia</h2>
+<p>Se midió en la build de producción (<code>vite preview</code>), con <code>performance.now()</code>, la petición de viviendas y el filtrado. Fueron 5 repeticiones sin caché, buscando «coruna» (encuentra «A Coruña» sin tilde ni eñe) y ordenando por renta:</p>
+<table>
+  <tr><th>Medida</th><th>Resultado</th></tr>
+  <tr><td>Tamaño de <code>/viviendas</code> (1.200 registros)</td><td>564 KB</td></tr>
+  <tr><td>Petición + descarga (local)</td><td>34 – 50 ms (mediana 42 ms)</td></tr>
+  <tr><td>Normalizar + filtrar + ordenar en el cliente</td><td>0,6 – 1,7 ms → 121 resultados</td></tr>
+  <tr><td>JavaScript de la build</td><td>312 KB (97 KB con gzip)</td></tr>
+  <tr><td>CSS de la build</td><td>32 KB (6,8 KB con gzip)</td></tr>
+  <tr><td>DOMContentLoaded de la página</td><td>45 ms</td></tr>
+</table>
+<p><b>Conclusión:</b> filtrar en el cliente cuesta menos de 2 ms, menos que un fotograma (16 ms), así que los filtros responden al momento mientras se escribe. Lo que más pesa es la descarga de las 1.200 viviendas, que se hace una sola vez al entrar al buscador. Además, el filtrado va dentro de <code>useMemo</code> y solo se recalcula cuando cambian los datos o los filtros. Las ilustraciones usan <code>loading="lazy"</code> y solo se descargan las 12 de la página visible.</p>
+
+<h2>7. La versión publicada sin el servidor de datos</h2>
+<p>La web se publica en GitHub Pages con un workflow que compila con la ruta base del repositorio y copia <code>index.html</code> a <code>404.html</code>, para que funcionen las URL de React Router al recargar. GitHub Pages solo sirve ficheros estáticos y no puede ejecutar json-server, y la URL de la API apunta a <code>localhost:3001</code>. Por eso:</p>
+<ul>
+  <li>La interfaz carga entera: cabecera, portada, buscador, navegación, la página 404 y el formulario.</li>
+  <li>Cada petición falla y se muestra el <b>estado de error</b> con «Reintentar», nunca una pantalla en blanco.</li>
+  <li>Para verla con datos hay que clonar el repositorio y arrancarla en local con <code>npm start</code>.</li>
+  <li>La selección y el borrador siguen guardándose en <code>localStorage</code>.</li>
+</ul>
+
+</body>
+</html>
