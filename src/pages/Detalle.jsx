@@ -59,7 +59,7 @@ export default function Detalle() {
         <div className={styles.ilustracion}>
           <span className={styles.ilustracionReferencia}>{vivienda.referencia}</span>
           <img
-            src={`/ilustraciones/${vivienda.id}.svg`}
+            src={`${import.meta.env.BASE_URL}ilustraciones/${vivienda.id}.svg`}
             alt={`Ilustración de vivienda ${vivienda.referencia}`}
           />
         </div>

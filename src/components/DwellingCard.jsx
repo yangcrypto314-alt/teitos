@@ -18,7 +18,7 @@ export default function DwellingCard({ vivienda, desactivada = false }) {
       <div className={styles.imagen}>
         <span className={styles.imagenReferencia}>{referencia}</span>
         <img
-          src={`/ilustraciones/${id}.svg`}
+          src={`${import.meta.env.BASE_URL}ilustraciones/${id}.svg`}
           alt=""
           loading="lazy"
           decoding="async"
