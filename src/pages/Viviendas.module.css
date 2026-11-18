@@ -1,27 +1,136 @@
-.controles {
+.pagina {
+  max-width: 1296px;
+  margin-inline: auto;
+}
+
+.intro {
+  margin-bottom: 24px;
+}
+
+.intro p {
+  margin-bottom: 8px;
+  color: var(--color-primario);
+  font-size: 0.85rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.intro h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  letter-spacing: -0.045em;
+}
+
+.intro span {
+  color: var(--color-texto-suave);
+}
+
+/* Barra de búsqueda grande, como en Figma */
+.buscador {
+  position: relative;
+  margin: 0 0 24px;
+}
+
+.buscador input {
+  width: 100%;
+  min-height: 60px;
+  padding-left: 52px;
+  border-radius: 14px;
+  font-size: 1rem;
+  box-shadow: 0 5px 18px rgb(23 53 45 / 4%);
+}
+
+.lupa {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  color: var(--color-texto-suave);
+  font-size: 1.5rem;
+  transform: translateY(-55%);
+  pointer-events: none;
+}
+
+/* Filtros a la izquierda, resultados a la derecha */
+.columnas {
+  display: grid;
+  grid-template-columns: 286px minmax(0, 1fr);
+  align-items: start;
+  gap: 32px;
+}
+
+.listado {
+  min-width: 0;
+}
+
+.nota {
+  margin: 0 0 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--color-primario-suave);
+  color: var(--color-texto);
+  font-size: 0.9rem;
+}
+
+.resultados {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   gap: 16px;
-  justify-content: center;
-  margin: 16px 0;
+  margin: 4px 0 14px;
 }
 
-.campo {
+.resultados p {
+  margin: 0;
+  color: var(--color-texto-suave);
+}
+
+.resultados p strong {
+  color: var(--color-texto);
+  font-size: 1.15rem;
+}
+
+.resultados label {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  text-align: left;
+  align-items: center;
+  gap: 10px;
 }
 
-.campo input,
-.campo select {
-  padding: 8px;
-  min-width: 240px;
+.resultados select {
+  min-height: 40px;
+  padding-block: 6px;
 }
 
 .rejilla {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-  margin: 16px 0 32px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 18px;
+}
+
+.oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .columnas {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .resultados {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .resultados label {
+    align-items: stretch;
+    flex-direction: column;
+  }
 }

@@ -9,6 +9,13 @@ export function formatearRenta(renta) {
   return `${renta} €/mes`;
 }
 
+// 0 → «Planta baja», 4 → «4.ª planta»
+export function formatearPlanta(planta) {
+  if (planta === null || planta === undefined) return 'Planta sin dato';
+  if (Number(planta) === 0) return 'Planta baja';
+  return `${planta}.ª planta`;
+}
+
 const ACCESIBILIDAD = {
   adaptada: 'Adaptada',
   practicable: 'Practicable',

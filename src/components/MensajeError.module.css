@@ -1,0 +1,26 @@
+.mensaje {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 6px 0 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--color-error-suave);
+  color: var(--color-error);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.icono {
+  display: inline-grid;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-error);
+  color: var(--color-sobre-primario);
+  font-size: 0.75rem;
+  font-weight: 800;
+}

@@ -1,3 +1,4 @@
+import MensajeError from './MensajeError.jsx';
 import styles from './CampoTexto.module.css';
 
 export default function CampoTexto({
@@ -34,11 +35,7 @@ export default function CampoTexto({
           {ayuda}
         </p>
       )}
-      {error && (
-        <p id={idError} className={styles.error} role="alert">
-          ⚠ {error}
-        </p>
-      )}
+      {error && <MensajeError id={idError}>{error}</MensajeError>}
     </div>
   );
 }

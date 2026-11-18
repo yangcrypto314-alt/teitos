@@ -1,4 +1,5 @@
 import CampoTexto from './CampoTexto.jsx';
+import MensajeError from './MensajeError.jsx';
 import styles from './CampoTexto.module.css';
 
 export default function PasoHogar({ borrador, errores, tocados, cambiar, tocar }) {
@@ -25,9 +26,7 @@ export default function PasoHogar({ borrador, errores, tocados, cambiar, tocar }
           <option value="6">6 o más</option>
         </select>
         {err('personas') && (
-          <p id="personas-error" className={styles.error} role="alert">
-            ⚠ {err('personas')}
-          </p>
+          <MensajeError id="personas-error">{err('personas')}</MensajeError>
         )}
       </div>
 

@@ -1,0 +1,39 @@
+.pagina {
+  display: grid;
+  justify-items: center;
+  max-width: 520px;
+  margin: 24px auto;
+  text-align: center;
+}
+
+.dibujo {
+  width: 200px;
+  margin-bottom: 16px;
+}
+
+.codigo {
+  margin-bottom: 6px;
+  color: var(--color-primario);
+  font-size: 0.85rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pagina h1 {
+  margin-bottom: 12px;
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 2.6rem);
+}
+
+.pagina > p:not(.codigo) {
+  color: var(--color-texto-suave);
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+}

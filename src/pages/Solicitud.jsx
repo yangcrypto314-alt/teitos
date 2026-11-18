@@ -36,9 +36,12 @@ export default function Solicitud() {
   // Ya hay una solicitud enviada
   if (solicitudId) {
     return (
-      <section>
-        <h2>Solicitud enviada</h2>
-        <p role="status">Tu solicitud nº {solicitudId} está registrada.</p>
+      <section className={styles.pagina}>
+        <div className={styles.estadoFinal}>
+          <span aria-hidden="true">✓</span>
+          <h1>Solicitud enviada</h1>
+          <p role="status">Tu solicitud nº {solicitudId} está registrada.</p>
+        </div>
         <p>
           <Link to="/mi-solicitud">Ver mi solicitud</Link>
         </p>
@@ -48,13 +51,19 @@ export default function Solicitud() {
 
   if (seleccion.length === 0) {
     return (
-      <section>
-        <h2>Solicitud</h2>
-        <p>
-          Todavía no has añadido ninguna vivienda. Elígelas en el{' '}
-          <Link to="/viviendas">listado</Link>. Solo se pueden pedir viviendas de
-          convocatorias abiertas.
-        </p>
+      <section className={styles.pagina}>
+        <header className={styles.intro}>
+          <p>Solicitud de vivienda</p>
+          <h1>Prepara tu solicitud</h1>
+        </header>
+        <div className={styles.vacio}>
+          <h2>Aún no has elegido una vivienda</h2>
+          <p>
+            Añade viviendas del <Link to="/viviendas">listado</Link> para empezar.
+            Solo se pueden pedir viviendas de convocatorias abiertas.
+          </p>
+          <Link className={styles.botonEnlace} to="/viviendas">Buscar viviendas</Link>
+        </div>
       </section>
     );
   }
@@ -123,22 +132,31 @@ export default function Solicitud() {
   const hayErrores = Object.keys(errores).length > 0;
 
   return (
-    <section>
-      <h2>Solicitud</h2>
+    <section className={styles.pagina}>
+      <header className={styles.intro}>
+        <p>Solicitud de vivienda</p>
+        <h1>Completa tu solicitud</h1>
+        <span>Completa los pasos para participar en la convocatoria.</span>
+      </header>
 
       <ol className={styles.pasos} aria-label="Pasos de la solicitud">
         {PASOS.map((nombre, i) => (
           <li key={nombre} aria-current={paso === i + 1 ? 'step' : undefined}>
-            {i + 1}. {nombre}
+            <span className={styles.numero}>{i + 1}</span>
+            <span>{nombre}</span>
           </li>
         ))}
       </ol>
 
-      {paso === 1 && (
-        <>
+      <div className={styles.panelPaso}>
+        {paso === 1 && (
+          <>
+            <div className={styles.tituloPaso}>
+              <h2>Tus viviendas preferidas</h2>
+              <p>Ordénalas según tu preferencia. Puedes elegir hasta {MAX_PREFERENCIAS} de una misma convocatoria.</p>
+            </div>
           <p>
-            La primera vivienda es la que más te interesa. Puedes elegir hasta{' '}
-            {MAX_PREFERENCIAS}, todas de la misma convocatoria.
+            La primera vivienda es la que más te interesa.
           </p>
           <ol className={styles.lista}>
             {seleccion.map((v, i) => (
@@ -187,50 +205,63 @@ export default function Solicitud() {
           <p>
             <Link to="/viviendas">Añadir más viviendas</Link>
           </p>
-        </>
-      )}
+          </>
+        )}
 
-      {(paso === 2 || paso === 3) && (
-        <form
-          className={styles.formulario}
-          noValidate
-          onSubmit={(e) => e.preventDefault()}
-        >
-          {paso === 2 && (
-            <PasoDatos
-              borrador={borrador}
-              errores={errores}
-              tocados={tocados}
-              cambiar={cambiar}
-              tocar={tocar}
-            />
-          )}
-          {paso === 3 && (
-            <PasoHogar
-              borrador={borrador}
-              errores={errores}
-              tocados={tocados}
-              cambiar={cambiar}
-              tocar={tocar}
-            />
-          )}
-        </form>
-      )}
+        {(paso === 2 || paso === 3) && (
+          <form
+            className={styles.formulario}
+            noValidate
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <div className={styles.tituloPaso}>
+              <h2>{paso === 2 ? 'Datos de la persona solicitante' : 'Tu hogar'}</h2>
+              <p>
+                {paso === 2
+                  ? 'Usaremos estos datos para gestionar tu solicitud.'
+                  : 'Indica el tamaño y los ingresos netos anuales de tu hogar.'}
+              </p>
+            </div>
+            {paso === 2 && (
+              <PasoDatos
+                borrador={borrador}
+                errores={errores}
+                tocados={tocados}
+                cambiar={cambiar}
+                tocar={tocar}
+              />
+            )}
+            {paso === 3 && (
+              <PasoHogar
+                borrador={borrador}
+                errores={errores}
+                tocados={tocados}
+                cambiar={cambiar}
+                tocar={tocar}
+              />
+            )}
+          </form>
+        )}
 
-      {paso === 4 && (
-        <div className={styles.revision}>
-          {hayErrores && (
-            <p role="alert">
-              ⚠ Hay datos por corregir. Vuelve atrás y revisa los pasos anteriores.
-            </p>
-          )}
-          <PasoRevision
-            seleccion={seleccion}
-            borrador={borrador}
-            className={styles.resumen}
-          />
-        </div>
-      )}
+        {paso === 4 && (
+          <div className={styles.revision}>
+            <div className={styles.tituloPaso}>
+              <h2>Revisa tus datos</h2>
+              <p>Comprueba que toda la información es correcta antes de enviar.</p>
+            </div>
+            {hayErrores && (
+              <p role="alert">
+                ⚠ Hay datos por corregir. Vuelve atrás y revisa los pasos anteriores.
+              </p>
+            )}
+            <PasoRevision
+              seleccion={seleccion}
+              borrador={borrador}
+              className={styles.resumen}
+            />
+          </div>
+        )}
+      </div>
 
       <div className={styles.navegacion}>
         {paso > 1 ? (

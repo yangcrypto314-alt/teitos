@@ -1,47 +1,102 @@
 .tarjeta {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
   border: 1px solid var(--color-borde);
-  border-radius: 8px;
-  padding: 16px;
+  border-top: 4px solid var(--color-primario);
+  border-radius: 16px;
   background: var(--color-superficie);
-  text-align: left;
+  box-shadow: 0 5px 18px rgb(23 53 45 / 4%);
+  transition: box-shadow 140ms ease, transform 140ms ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-suave);
+}
+
+.tarjeta:focus-within {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
 }
 
 .cabecera {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
-}
-
-.codigo {
-  margin: 0;
-  font-size: 1.1rem;
-  color: var(--color-texto);
+  margin-bottom: 14px;
 }
 
 .estado {
-  border: 1px solid currentColor;
+  padding: 5px 12px;
   border-radius: 999px;
-  padding: 2px 10px;
+  background: var(--color-primario-suave);
+  color: var(--color-primario);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.plazo {
+  color: var(--color-texto-suave);
   font-size: 0.8rem;
+}
+
+/* Variantes por estado */
+.cerrada {
+  border-top-color: var(--color-acento);
+}
+
+.cerrada .estado {
+  background: #f5f0e4;
+  color: #886221;
+}
+
+.resuelta {
+  border-top-color: #8fa6b8;
+}
+
+.resuelta .estado {
+  background: #eaf1f7;
+  color: #385b78;
+}
+
+.codigo {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.codigo span {
   font-weight: 600;
 }
 
-.provincia {
-  margin: 4px 0 12px;
+.resumen {
+  margin: 0 0 14px;
   color: var(--color-texto-suave);
+  font-size: 0.92rem;
+}
+
+.resumen strong {
+  color: var(--color-primario);
 }
 
 .datos {
-  margin: 0;
   display: grid;
-  gap: 6px;
+  gap: 8px;
+  margin: 0 0 auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-borde);
 }
 
 .datos div {
   display: flex;
   justify-content: space-between;
   gap: 12px;
+  font-size: 0.85rem;
 }
 
 .datos dt {
@@ -51,4 +106,37 @@
 .datos dd {
   margin: 0;
   font-weight: 600;
+  text-align: right;
+}
+
+.enlace {
+  display: inline-flex;
+  align-self: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  color: var(--color-primario);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.enlace:hover {
+  text-decoration: underline;
+}
+
+.sinPlazas {
+  margin: 16px 0 0;
+  color: var(--color-texto-suave);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }

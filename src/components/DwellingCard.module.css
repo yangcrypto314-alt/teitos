@@ -1,32 +1,76 @@
 .tarjeta {
+  overflow: hidden;
   border: 1px solid var(--color-borde);
-  border-radius: 8px;
-  padding: 16px;
+  border-radius: 16px;
   background: var(--color-superficie);
+  box-shadow: 0 5px 18px rgb(23 53 45 / 4%);
   text-align: left;
+  transition: box-shadow 140ms ease, transform 140ms ease;
 }
 
-.referencia {
-  margin: 0;
-  font-size: 1.05rem;
-  color: var(--color-texto);
+.tarjeta:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-suave);
 }
 
-.lugar {
-  margin: 4px 0 12px;
+.imagen {
+  display: grid;
+  grid-template-rows: auto auto;
+  overflow: hidden;
+  background: #e9ece7;
+}
+
+.imagenReferencia {
+  padding: 10px 14px;
+  border-bottom: 1px solid rgb(23 53 45 / 10%);
   color: var(--color-texto-suave);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.imagen img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.contenido {
+  padding: 18px;
+}
+
+.tipologia {
+  margin: 0 0 13px;
+  color: var(--color-texto-suave);
+  font-size: 0.9rem;
+}
+
+.renta {
+  margin: 0 0 14px;
+  color: var(--color-primario);
+  font-size: 1.3rem;
+  font-weight: 750;
+}
+
+.renta span {
+  color: var(--color-texto-suave);
+  font-size: 0.84rem;
+  font-weight: 400;
 }
 
 .datos {
-  margin: 0 0 12px;
   display: grid;
-  gap: 6px;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding-top: 13px;
+  border-top: 1px solid var(--color-borde);
 }
 
 .datos div {
   display: flex;
   justify-content: space-between;
   gap: 12px;
+  font-size: 0.82rem;
 }
 
 .datos dt {
@@ -40,7 +84,75 @@
 }
 
 .enlace {
-  display: inline-block;
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: var(--color-primario-suave);
+  color: var(--color-primario);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.enlace:hover {
+  background: #d8e9df;
+}
+
+.lugar {
+  margin: 0 0 4px;
+  color: var(--color-texto);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.lugar span {
+  color: var(--color-texto-suave);
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #var(--color-primario);
+}
+
+.enlace {
+  gap: 8px;
+}
+
+/* Foco: la tarjeta entera se marca cuando su enlace tiene el foco */
+.tarjeta:focus-within {
+  outline: 3px solid var(--color-acento);
+  outline-offset: 2px;
+}
+
+.aviso {
+  color: #8a5a12;
+}
+
+.desactivada {
+  opacity: 0.6;
+  filter: grayscale(0.6);
+}
+
+.desactivada:hover {
+  transform: none;
+}
+
+.adjudicada {
+  display: inline-block;
+  margin: 0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #e5e9e6;
+  color: var(--color-texto-suave);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.oculto {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }

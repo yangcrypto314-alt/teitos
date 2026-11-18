@@ -1,6 +1,8 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router';
 import EditarSolicitud from '../components/EditarSolicitud.jsx';
+import Boton from '../components/Boton.jsx';
+import Estado from '../components/Estado.jsx';
 import Modal from '../components/Modal.jsx';
 import PasoRevision from '../components/PasoRevision.jsx';
 import useMiSolicitud from '../hooks/useMiSolicitud.js';
@@ -24,8 +26,8 @@ export default function MiSolicitud() {
 
   if (retirada) {
     return (
-      <section>
-        <h2>Mi solicitud</h2>
+      <section className={styles.pagina}>
+        <h1>Mi solicitud</h1>
         <p role="status">Tu solicitud ha sido retirada.</p>
         <p>
           <Link to="/viviendas">Buscar viviendas</Link>
@@ -36,33 +38,40 @@ export default function MiSolicitud() {
 
   if (!solicitudId) {
     return (
-      <section>
-        <h2>Mi solicitud</h2>
-        <p>
-          Todavía no has enviado ninguna solicitud. Elige viviendas en el{' '}
-          <Link to="/viviendas">listado</Link> y completa la{' '}
-          <Link to="/solicitud">solicitud</Link>.
-        </p>
+      <section className={styles.pagina}>
+        <header className={styles.intro}>
+          <p>Área personal</p>
+          <h1>Mi solicitud</h1>
+        </header>
+        <div className={styles.vacio}>
+          <h2>Aún no has enviado ninguna solicitud</h2>
+          <p>
+            Todavía no has enviado ninguna solicitud. Elige viviendas en el{' '}
+            <Link to="/viviendas">listado</Link> y completa la{' '}
+            <Link to="/solicitud">solicitud</Link>.
+          </p>
+        </div>
       </section>
     );
   }
 
-  if (cargando) return <p role="status">Cargando tu solicitud…</p>;
+  if (cargando) return <Estado tipo="cargando" titulo="Cargando tu solicitud…" filas={1} />;
 
   if (error) {
     const noExiste = error.estado === 404;
     return (
-      <section>
-        <h2>Mi solicitud</h2>
-        <p role="alert">
-          {noExiste
-            ? 'Tu solicitud ya no existe en el servidor.'
-            : `No se ha podido cargar tu solicitud. (${error.message})`}
-        </p>
-        {noExiste && (
-          <button type="button" onClick={() => dispatch({ tipo: 'vaciar' })}>
-            Empezar de nuevo
-          </button>
+      <section className={styles.pagina}>
+        <h1>Mi solicitud</h1>
+        {noExiste ? (
+          <Estado
+            tipo="vacio"
+            titulo="Tu solicitud ya no existe en el servidor"
+            texto="Puede que se hayan restaurado los datos. Puedes preparar una nueva."
+            accion="Empezar de nuevo"
+            onAccion={() => dispatch({ tipo: 'vaciar' })}
+          />
+        ) : (
+          <Estado tipo="error" titulo="No se pudo cargar tu solicitud." onAccion={recargar} />
         )}
       </section>
     );
@@ -88,74 +97,79 @@ export default function MiSolicitud() {
   }
 
   return (
-    <section>
-      <h2>Mi solicitud</h2>
-      <p>
-        Solicitud nº {solicitud.id} · enviada el {formatearFecha(solicitud.fechaEnvio)}
-        {solicitud.fechaModificacion &&
-          ` · modificada el ${formatearFecha(solicitud.fechaModificacion)}`}
-      </p>
-      <p>
-        Convocatoria:{' '}
-        {convocatoria
-          ? `${convocatoria.codigo} (${convocatoria.estado}) · plazo hasta el ${formatearFecha(convocatoria.fechaCierre)}`
-          : 'Sin dato'}
-      </p>
-
-      {guardado && !editando && (
-        <p role="status">Cambios guardados.</p>
-      )}
-
-      {!abierta && (
-        <p role="status">
-          El plazo de esta convocatoria ya no está abierto: la solicitud no se puede
-          modificar ni retirar.
+    <section className={styles.pagina}>
+      <header className={styles.intro}>
+        <p>Área personal</p>
+        <h1>Mi solicitud</h1>
+      </header>
+      <div className={styles.panelPaso}>
+        <p>
+          Solicitud nº {solicitud.id} · enviada el {formatearFecha(solicitud.fechaEnvio)}
+          {solicitud.fechaModificacion &&
+            ` · modificada el ${formatearFecha(solicitud.fechaModificacion)}`}
         </p>
-      )}
+        <p>
+          Convocatoria:{' '}
+          {convocatoria
+            ? `${convocatoria.codigo} (${convocatoria.estado}) · plazo hasta el ${formatearFecha(convocatoria.fechaCierre)}`
+            : 'Sin dato'}
+        </p>
 
-      {editando && abierta ? (
-        <EditarSolicitud
-          solicitud={solicitud}
-          viviendas={viviendas}
-          onCancelar={() => setEditando(false)}
-          onGuardada={() => {
-            setEditando(false);
-            setGuardado(true);
-            recargar();
-          }}
-        />
-      ) : (
-        <>
-          <div className={styles.revision}>
-            <PasoRevision
-              seleccion={viviendas.filter(Boolean)}
-              borrador={{
-                ...solicitud.solicitante,
-                personas: String(solicitud.hogar.personas),
-                ingresos: String(solicitud.hogar.ingresos),
-              }}
-              className={styles.resumen}
-            />
-          </div>
+        {guardado && !editando && (
+          <p role="status">Cambios guardados.</p>
+        )}
 
-          {abierta && (
-            <div className={styles.navegacion}>
-              <button
-                type="button"
-                onClick={() => {
-                  setGuardado(false);
-                  setEditando(true);
+        {!abierta && (
+          <p role="status">
+            El plazo de esta convocatoria ya no está abierto: la solicitud no se puede
+            modificar ni retirar.
+          </p>
+        )}
+
+        {editando && abierta ? (
+          <EditarSolicitud
+            solicitud={solicitud}
+            viviendas={viviendas}
+            onCancelar={() => setEditando(false)}
+            onGuardada={() => {
+              setEditando(false);
+              setGuardado(true);
+              recargar();
+            }}
+          />
+        ) : (
+          <>
+            <div className={styles.revision}>
+              <PasoRevision
+                seleccion={viviendas.filter(Boolean)}
+                borrador={{
+                  ...solicitud.solicitante,
+                  personas: String(solicitud.hogar.personas),
+                  ingresos: String(solicitud.hogar.ingresos),
                 }}
-              >
-                Modificar
-              </button>
-              <button type="button" onClick={() => setModalRetirar(true)}>
-                Retirar solicitud
-              </button>
+                className={styles.resumen}
+              />
             </div>
-          )}
-        </>
-      )}
+
+            {abierta && (
+              <div className={styles.navegacion}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setGuardado(false);
+                    setEditando(true);
+                  }}
+                >
+                  Modificar
+                </button>
+                <Boton variante="peligro" onClick={() => setModalRetirar(true)}>
+                  Retirar solicitud
+                </Boton>
+              </div>
+            )}
+          </>
+        )}
+      </div>
 
       <Modal
         abierto={modalRetirar}
@@ -170,9 +184,9 @@ export default function MiSolicitud() {
             >
               Cancelar
             </button>
-            <button type="button" onClick={confirmarRetirada} disabled={retirando}>
+            <Boton variante="peligro" onClick={confirmarRetirada} disabled={retirando}>
               {retirando ? 'Retirando…' : 'Sí, retirar'}
-            </button>
+            </Boton>
           </>
         }
       >

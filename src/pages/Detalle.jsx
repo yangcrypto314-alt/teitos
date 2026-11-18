@@ -1,28 +1,40 @@
-﻿import { Link, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 import useVivienda from '../hooks/useVivienda.js';
 import useSolicitud from '../hooks/useSolicitud.js';
 import { motivoRechazo } from '../context/solicitudReducer.js';
-import { formatearRenta, textoAccesibilidad } from '../utils/formato.js';
+import Boton from '../components/Boton.jsx';
+import Estado from '../components/Estado.jsx';
+import { formatearFecha, formatearPlanta, formatearRenta, textoAccesibilidad } from '../utils/formato.js';
 import styles from './Detalle.module.css';
 
 export default function Detalle() {
   const { id } = useParams();
   const { vivienda, convocatoria, cargando, error } = useVivienda(id);
   const { estado, dispatch } = useSolicitud();
+  const navigate = useNavigate();
 
-  if (cargando) return <p role="status">Cargando vivienda…</p>;
+  if (cargando) return <Estado tipo="cargando" titulo="Cargando vivienda…" filas={1} />;
 
   if (error) {
-    const noExiste = error.estado === 404;
+    // 404 = la vivienda no existe; cualquier otro = fallo del servidor
+    if (error.estado === 404) {
+      return (
+        <Estado
+          tipo="vacio"
+          titulo={`La vivienda ${id} no existe`}
+          texto="Puede que la dirección esté mal escrita o que la vivienda se haya retirado."
+          accion="Volver al listado"
+          onAccion={() => navigate('/viviendas')}
+        />
+      );
+    }
     return (
-      <section>
-        <p role="alert">
-          {noExiste
-            ? `La vivienda ${id} no existe.`
-            : `No se ha podido cargar la vivienda. (${error.message})`}
-        </p>
-        <Link to="/viviendas">Volver al listado</Link>
-      </section>
+      <Estado
+        tipo="error"
+        titulo="No se pudo cargar la vivienda."
+        accion="Volver al listado"
+        onAccion={() => navigate('/viviendas')}
+      />
     );
   }
 
@@ -74,13 +86,20 @@ export default function Detalle() {
             <div><dt>Superficie</dt><dd>{vivienda.superficie} m²</dd></div>
             <div>
               <dt>Planta</dt>
-              <dd>{vivienda.planta} · {vivienda.ascensor ? 'con ascensor' : 'sin ascensor'}</dd>
+              <dd>{formatearPlanta(vivienda.planta)} · {vivienda.ascensor ? 'con ascensor' : 'sin ascensor'}</dd>
             </div>
             <div><dt>Tipo</dt><dd>{vivienda.tipologia}</dd></div>
           </dl>
           <p className={styles.accesibilidad}>
-            Accesibilidad {textoAccesibilidad(vivienda.accesibilidad).toLowerCase()}
+            {vivienda.accesibilidad == null
+              ? 'Dato de accesibilidad no disponible'
+              : `Accesibilidad ${textoAccesibilidad(vivienda.accesibilidad).toLowerCase()}`}
           </p>
+          {!vivienda.ascensor && vivienda.planta >= 4 && (
+            <p className={styles.avisoPlanta}>
+              <span aria-hidden="true">▲</span> {formatearPlanta(vivienda.planta)} sin ascensor: tenlo en cuenta si hay personas mayores o con movilidad reducida.
+            </p>
+          )}
         </div>
       </div>
 
@@ -106,36 +125,46 @@ export default function Detalle() {
         </section>
         <aside className={styles.convocatoria}>
           <h2>Convocatoria</h2>
-          <strong>{convocatoria ? convocatoria.codigo : 'Sin dato'}</strong>
-          <p>{convocatoria ? `${convocatoria.provincia} · ${convocatoria.estado}` : 'No hay información disponible.'}</p>
+          <strong>{convocatoria ? `${convocatoria.codigo} · ${convocatoria.provincia}` : 'Sin dato'}</strong>
+          <p>
+            {!convocatoria
+              ? 'No hay información disponible.'
+              : convocatoria.estado === 'abierta'
+                ? `Plazo abierto hasta el ${formatearFecha(convocatoria.fechaCierre)}`
+                : convocatoria.estado === 'cerrada'
+                  ? 'Plazo cerrado · pendiente de sorteo'
+                  : 'Plazo cerrado · adjudicación resuelta'}
+          </p>
         </aside>
       </div>
 
       <div className={styles.acciones}>
         {!solicitable ? (
           <p>
-            No se puede solicitar: la vivienda está adjudicada o su convocatoria no está abierta.
+            {vivienda.adjudicada
+              ? 'No se puede solicitar: esta vivienda ya está adjudicada.'
+              : `No se puede solicitar: la convocatoria ${convocatoria?.codigo ?? ''} no está abierta.`}
           </p>
         ) : yaAnadida ? (
           <>
-            <p role="status">Añadida a tu solicitud.</p>
-            <Link to="/solicitud">Ver mi solicitud</Link>
-            <button
-              type="button"
+            <p role="status">✓ Añadida a tu solicitud ({estado.seleccion.length} de 3).</p>
+            <Boton to="/solicitud">Continuar con la solicitud →</Boton>
+            <Boton
+              variante="secundario"
               onClick={() => dispatch({ tipo: 'quitar', id: vivienda.id })}
             >
-              Quitar de mi solicitud
-            </button>
+              Quitar
+            </Boton>
           </>
         ) : motivo ? (
           <p role="status">{motivo}</p>
         ) : (
-          <button
-            type="button"
-            onClick={() => dispatch({ tipo: 'anadir', vivienda: resumen })}
-          >
-            Añadir a mi solicitud
-          </button>
+          <>
+            <p>Puedes elegir hasta 3 viviendas de esta convocatoria.</p>
+            <Boton onClick={() => dispatch({ tipo: 'anadir', vivienda: resumen })}>
+              {estado.seleccion.length === 0 ? 'Iniciar solicitud' : 'Añadir a mi solicitud'}
+            </Boton>
+          </>
         )}
       </div>
     </section>

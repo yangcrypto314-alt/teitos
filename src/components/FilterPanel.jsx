@@ -5,6 +5,8 @@ const MEDIDAS = [
   { valor: 'practicable', texto: 'Practicable' },
 ];
 
+// Panel lateral con los cuatro filtros del portal.
+// No guarda estado propio: recibe los filtros y avisa al padre con onCambiar.
 export default function FilterPanel({ filtros, provincias, onCambiar, onLimpiar }) {
   function alternarMedida(valor) {
     const actuales = filtros.accesibilidad;
@@ -14,12 +16,31 @@ export default function FilterPanel({ filtros, provincias, onCambiar, onLimpiar 
     onCambiar('accesibilidad', nuevas);
   }
 
+  const activos =
+    [filtros.provincia, filtros.personas, filtros.ingresos].filter(Boolean).length +
+    filtros.accesibilidad.length;
+
   return (
     <form
       className={styles.panel}
-      aria-label="Filtros"
+      aria-labelledby="filtros-titulo"
       onSubmit={(e) => e.preventDefault()}
     >
+      <div className={styles.cabecera}>
+        <h2 id="filtros-titulo">
+          Filtros
+          {activos > 0 && <span className={styles.contador}>{activos}</span>}
+        </h2>
+        <button
+          type="button"
+          className={styles.limpiar}
+          onClick={onLimpiar}
+          disabled={activos === 0}
+        >
+          Limpiar
+        </button>
+      </div>
+
       <div className={styles.campo}>
         <label htmlFor="provincia">Provincia</label>
         <select
@@ -27,7 +48,7 @@ export default function FilterPanel({ filtros, provincias, onCambiar, onLimpiar 
           value={filtros.provincia}
           onChange={(e) => onCambiar('provincia', e.target.value)}
         >
-          <option value="">Todas las provincias</option>
+          <option value="">Todas</option>
           {provincias.map((p) => (
             <option key={p} value={p}>{p}</option>
           ))}
@@ -35,24 +56,24 @@ export default function FilterPanel({ filtros, provincias, onCambiar, onLimpiar 
       </div>
 
       <div className={styles.campo}>
-        <label htmlFor="personas">Personas en la vivienda</label>
+        <label htmlFor="personas">Personas en el hogar</label>
         <select
           id="personas"
           value={filtros.personas}
           onChange={(e) => onCambiar('personas', e.target.value)}
         >
-          <option value="">Sin indicar</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+          <option value="">Selecciona</option>
+          <option value="1">1 persona</option>
+          <option value="2">2 personas</option>
+          <option value="3">3 personas</option>
+          <option value="4">4 personas</option>
+          <option value="5">5 personas</option>
           <option value="6">6 o más</option>
         </select>
       </div>
 
       <div className={styles.campo}>
-        <label htmlFor="ingresos">Ingresos netos anuales del hogar (€)</label>
+        <label htmlFor="ingresos">Ingresos netos anuales (€)</label>
         <input
           id="ingresos"
           type="number"
@@ -66,7 +87,7 @@ export default function FilterPanel({ filtros, provincias, onCambiar, onLimpiar 
       </div>
 
       <fieldset className={styles.medidas}>
-        <legend>Medidas de accesibilidad</legend>
+        <legend>Accesibilidad</legend>
         {MEDIDAS.map((m) => (
           <label key={m.valor}>
             <input
@@ -78,10 +99,6 @@ export default function FilterPanel({ filtros, provincias, onCambiar, onLimpiar 
           </label>
         ))}
       </fieldset>
-
-      <button type="button" onClick={onLimpiar}>
-        Limpiar filtros
-      </button>
     </form>
   );
 }
