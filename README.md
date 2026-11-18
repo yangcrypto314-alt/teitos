@@ -4,6 +4,7 @@ Portal de alquiler público asequible: convocatorias, buscador de viviendas con 
 
 - Web publicada: https://yangcrypto314-alt.github.io/teitos/ (sin servidor de datos muestra el estado de error; para ver datos, arráncala en local)
 - Memoria: [docs/memoria.pdf](docs/memoria.pdf)
+- Figma: https://www.figma.com/design/fAQzOazrPtt3sOzp9CJDiR · prototipo: https://www.figma.com/proto/fAQzOazrPtt3sOzp9CJDiR?node-id=1-1026&starting-point-node-id=1%3A1026 · PDF: [docs/figma/Teitos-diseno-figma.pdf](docs/figma/Teitos-diseno-figma.pdf)
 
 ## Arrancar en otra máquina
 
