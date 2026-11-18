@@ -2,6 +2,9 @@
 
 Portal de alquiler público asequible: convocatorias, buscador de viviendas con filtros y solicitud por pasos. Proyecto de aula de PMDM hecho con React + Vite y una API local con json-server.
 
+- Web publicada: https://yangcrypto314-alt.github.io/teitos/ (sin servidor de datos muestra el estado de error; para ver datos, arráncala en local)
+- Memoria: [docs/memoria.pdf](docs/memoria.pdf)
+
 ## Arrancar en otra máquina
 
 Necesitas Node.js 20 o superior. En la carpeta del proyecto:
