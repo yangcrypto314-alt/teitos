@@ -1,7 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router';
 import useVivienda from '../hooks/useVivienda.js';
 import useSolicitud from '../hooks/useSolicitud.js';
-import { motivoRechazo } from '../context/solicitudReducer.js';
+import { MAX_PREFERENCIAS, motivoRechazo } from '../context/solicitudReducer.js';
 import Boton from '../components/Boton.jsx';
 import Estado from '../components/Estado.jsx';
 import { formatearFecha, formatearPlanta, formatearRenta, textoAccesibilidad } from '../utils/formato.js';
@@ -147,7 +147,7 @@ export default function Detalle() {
           </p>
         ) : yaAnadida ? (
           <>
-            <p role="status">✓ Añadida a tu solicitud ({estado.seleccion.length} de 3).</p>
+            <p role="status">✓ Añadida a tu solicitud ({estado.seleccion.length} de {MAX_PREFERENCIAS}).</p>
             <Boton to="/solicitud">Continuar con la solicitud →</Boton>
             <Boton
               variante="secundario"
@@ -160,7 +160,7 @@ export default function Detalle() {
           <p role="status">{motivo}</p>
         ) : (
           <>
-            <p>Puedes elegir hasta 3 viviendas de esta convocatoria.</p>
+            <p>Puedes elegir hasta {MAX_PREFERENCIAS} viviendas de esta convocatoria.</p>
             <Boton onClick={() => dispatch({ tipo: 'anadir', vivienda: resumen })}>
               {estado.seleccion.length === 0 ? 'Iniciar solicitud' : 'Añadir a mi solicitud'}
             </Boton>

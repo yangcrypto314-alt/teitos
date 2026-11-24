@@ -5,11 +5,12 @@ import Estado from '../components/Estado.jsx';
 import Hero from '../components/Hero.jsx';
 import useConvocatorias from '../hooks/useConvocatorias.js';
 import useViviendas from '../hooks/useViviendas.js';
+import { MAX_PREFERENCIAS } from '../context/solicitudReducer.js';
 import styles from './Inicio.module.css';
 
 const PASOS = [
   { titulo: 'Busca', texto: 'Filtra por provincia, tu hogar y tus ingresos. Solo verás viviendas a tu alcance.' },
-  { titulo: 'Elige', texto: 'Añade hasta 3 viviendas de una misma convocatoria y ordénalas por preferencia.' },
+  { titulo: 'Elige', texto: `Añade hasta ${MAX_PREFERENCIAS} viviendas de una misma convocatoria y ordénalas por preferencia.` },
   { titulo: 'Solicita', texto: 'Rellena tus datos en 4 pasos. Puedes cambiarla o retirarla mientras el plazo siga abierto.' },
 ];
 

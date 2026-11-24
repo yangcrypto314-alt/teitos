@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Chuleta defensa · Teitos</title>
+<style>
+  @page { size: A4; margin: 12mm 12mm 12mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Arial, sans-serif; color: #17352d; font-size: 9.6pt; line-height: 1.38; margin: 0; }
+  h1 { font-size: 20pt; margin: 0 0 2px; color: #1c7058; }
+  h2 { font-size: 12.5pt; margin: 14px 0 6px; padding: 3px 8px; background: #1c7058; color: #fff; border-radius: 4px; break-after: avoid; }
+  h3 { font-size: 10.5pt; margin: 10px 0 3px; color: #1c7058; break-after: avoid; }
+  p { margin: 0 0 5px; }
+  ul, ol { margin: 0 0 6px; padding-left: 16px; }
+  li { margin-bottom: 1px; }
+  code { font-family: Consolas, monospace; font-size: 8.8pt; background: #eef2ee; padding: 0 3px; border-radius: 3px; }
+  pre { font-family: Consolas, monospace; font-size: 8.4pt; background: #17352d; color: #e4f0e9; padding: 6px 8px; border-radius: 5px; margin: 3px 0 7px; white-space: pre-wrap; break-inside: avoid; }
+  table { width: 100%; border-collapse: collapse; margin: 3px 0 8px; font-size: 8.9pt; }
+  tr { break-inside: avoid; }
+  th { background: #e5f1eb; text-align: left; padding: 3px 5px; }
+  td { border-bottom: 1px solid #dce4de; padding: 3px 5px; vertical-align: top; }
+  .sub { color: #61736b; }
+  .caja { border: 1.5px solid #1c7058; border-radius: 6px; padding: 6px 9px; margin: 5px 0 8px; break-inside: avoid; background: #f7faf8; }
+  .aviso { border-color: #b33a32; background: #fcf3f1; }
+  .q { font-weight: 700; margin-top: 6px; break-after: avoid; }
+  .q::before { content: "P: "; color: #b33a32; }
+  .a { margin: 0 0 5px 12px; }
+  .a::before { content: "R: "; font-weight: 700; color: #1c7058; }
+  .dos { columns: 2; column-gap: 16px; }
+  .dos > * { break-inside: avoid; }
+  .salto { break-before: page; }
+  .min { display: inline-block; min-width: 54px; font-weight: 700; color: #1c7058; }
+</style>
+</head>
+<body>
+
+<h1>Chuleta de defensa · Teitos</h1>
+<p class="sub">Portal de alquiler asequible · SPA en React 19 + Vite + React Router 7 + json-server 1.0.0-beta.15 · Proyecto 1 PMDM</p>
+
+<div class="caja">
+<b>La idea en una frase:</b> «Es una SPA en React que pide los datos a una API REST local hecha con json-server. Los datos pasan por la carpeta <code>api/</code>, los piden mis <b>hooks</b> con <code>useEffect</code>, las <b>páginas</b> los filtran y los pintan con <b>componentes</b> pequeños, y la solicitud se guarda en un <b>Context con useReducer</b> que se copia en <b>localStorage</b>.»
+</div>
+
+<h2>0 · Antes de empezar (10 min antes)</h2>
+<ol>
+  <li>Abrir terminal en la carpeta del proyecto → <code>npm install</code> (si es otro PC) → <code>npm run reset-datos</code> → <code>npm start</code>.</li>
+  <li>Comprobar <code>http://localhost:5173</code> (web) y <code>http://localhost:3001/viviendas</code> (API).</li>
+  <li>Tener abiertos en VS Code: <code>reglas/acceso.js</code>, <code>pages/Viviendas.jsx</code>, <code>hooks/useViviendas.js</code>, <code>context/solicitudReducer.js</code>, <code>api/cliente.js</code>.</li>
+  <li>Pestañas del navegador: la web, Figma (prototipo) y GitHub.</li>
+  <li>Si algo se rompe en directo: <b>Ctrl+Z</b> en VS Code y guardar; Vite recarga solo. Si la API se queda rara: parar (Ctrl+C), <code>npm run reset-datos</code>, <code>npm start</code>.</li>
+</ol>
+
+<h2>1 · Guion del recorrido (≈ 6–8 min)</h2>
+<table>
+<tr><th style="width:12%">Tiempo</th><th style="width:38%">Qué enseño</th><th>Qué digo</th></tr>
+<tr><td>0:00</td><td>Figma: Sistema y componentes</td><td>«Primero diseñé en Figma: 8 variables de color con los mismos nombres que mi CSS, 6 estilos de texto y 7 componentes con sus 5 estados: normal, hover, foco, desactivado y error.»</td></tr>
+<tr><td>1:00</td><td>Figma: prototipo (Inicio → … → Confirmación)</td><td>«El prototipo es navegable, siguiendo el flujo que pide el enunciado.»</td></tr>
+<tr><td>1:30</td><td>Web: Inicio</td><td>«En Inicio salen las 16 convocatorias. Las abiertas primero. La 26-6-MAD sale como "todas adjudicadas" porque cuento las viviendas libres de cada una.»</td></tr>
+<tr><td>2:30</td><td>Hero: buscador rápido → elegir Pontevedra, 2 personas, 30000 €</td><td>«El buscador me lleva a /viviendas con los filtros en la URL. Esa URL se puede pegar en un correo.»</td></tr>
+<tr><td>3:15</td><td>Viviendas: escribir «coruna», cambiar orden, pasar de página</td><td>«Busco sin tildes ni eñes, ordeno por renta o superficie, 12 por página. Ingresos y personas aplican la regla de acceso (IPREM), no comparan un campo.»</td></tr>
+<tr><td>4:15</td><td>Detalle 478 y 926</td><td>«La 478 no tiene dato de accesibilidad, que no es lo mismo que "sin adaptar". La 926 avisa de que es una 4.ª planta sin ascensor.»</td></tr>
+<tr><td>5:00</td><td>Iniciar solicitud → 4 pasos con errores → enviar</td><td>«Validación al vuelo y al pulsar Siguiente; DNI con su letra; modal de confirmación accesible; hace un POST.»</td></tr>
+<tr><td>6:15</td><td>Mi solicitud: Modificar → Guardar; Retirar</td><td>«Se puede modificar (PUT) o retirar (DELETE) solo si la convocatoria está abierta.»</td></tr>
+<tr><td>7:00</td><td>F5 a mitad de solicitud · teclado (Tab) · móvil (F12, 390 px)</td><td>«La selección sobrevive a recargar (localStorage). Todo se usa con teclado y el foco se ve. A 390 px no hay scroll horizontal.»</td></tr>
+</table>
+
+<h2>2 · Cómo viajan los datos</h2>
+<pre>db.json ──json-server :3001──► api/cliente.js (pedir) ──► api/viviendas.js… ──► hooks/useViviendas.js (useEffect + 3 estados)
+       ──► pages/Viviendas.jsx (filtra, ordena, pagina con useMemo) ──► components/DwellingCard.jsx (pinta)
+Solicitud: pages/Solicitud.jsx ──dispatch──► context/solicitudReducer.js ──► SolicitudProvider (guarda en localStorage)
+           al enviar ──► api/solicitudes.js crearSolicitud (POST) ──► db.json "solicitudes"</pre>
+
+<h2>3 · Qué hace cada fichero</h2>
+<table>
+<tr><th style="width:30%">Fichero</th><th>Qué hace (y lo importante dentro)</th></tr>
+<tr><td><code>main.jsx</code></td><td>Punto de entrada. Monta <code>&lt;App/&gt;</code> dentro de <code>BrowserRouter</code> (rutas sin recargar; <code>basename</code> para GitHub Pages) y de <code>SolicitudProvider</code> (Context global). Importa los CSS globales.</td></tr>
+<tr><td><code>App.jsx</code></td><td>Header, <code>&lt;Routes&gt;</code> con las 6 rutas, Footer y BarraMovil. Enlace «Saltar al contenido». <code>useScrollAlNavegar</code>: sube arriba al cambiar de página o baja a un <code>#ancla</code>.</td></tr>
+<tr><td><code>api/cliente.js</code></td><td><b>Única</b> URL del servidor (<code>API_URL</code>). <code>pedir(ruta, opciones)</code>: hace <code>fetch</code>, si <code>!respuesta.ok</code> lanza un Error con <code>error.estado = status</code>; si es 204 devuelve null; si no, <code>respuesta.json()</code>.</td></tr>
+<tr><td><code>api/viviendas.js</code>, <code>convocatorias.js</code></td><td><code>getViviendas()</code>, <code>getVivienda(id)</code>, <code>getConvocatorias()</code>, <code>getConvocatoria(id)</code>. <code>encodeURIComponent</code> por seguridad en la URL.</td></tr>
+<tr><td><code>api/solicitudes.js</code></td><td><code>crearSolicitud</code> (POST), <code>getSolicitud</code> (GET), <code>actualizarSolicitud</code> (PUT), <code>retirarSolicitud</code> (DELETE). Cabecera <code>Content-Type: application/json</code> y <code>JSON.stringify</code>.</td></tr>
+<tr><td><code>hooks/useViviendas.js</code></td><td>Pide las 1.200 y <b>quita las adjudicadas</b> (<code>!v.adjudicada</code>) → 979. Devuelve <code>{datos, cargando, error, vacio, recargar}</code>.</td></tr>
+<tr><td><code>hooks/useConvocatorias.js</code></td><td>Igual, con las 16 convocatorias.</td></tr>
+<tr><td><code>hooks/useVivienda.js</code></td><td>Pide una vivienda y <b>luego</b> su convocatoria (unión manual, <code>_embed</code> no funciona). Si la convocatoria falla, muestra la vivienda igual (<code>.catch(() =&gt; null)</code>).</td></tr>
+<tr><td><code>hooks/useMiSolicitud.js</code></td><td>Pide la solicitud enviada + su convocatoria + sus viviendas con <code>Promise.all</code> (en paralelo).</td></tr>
+<tr><td><code>hooks/useSolicitud.js</code></td><td>Atajo para leer el Context: <code>useContext(SolicitudContext)</code>. Si se usa fuera del Provider, lanza error.</td></tr>
+<tr><td><code>context/solicitudContext.js</code></td><td><code>createContext(null)</code>: crea el «canal» global.</td></tr>
+<tr><td><code>context/solicitudReducer.js</code></td><td><code>estadoInicial</code> (seleccion, borrador, paso, solicitudId), <code>MAX_PREFERENCIAS = 3</code>, <code>motivoRechazo()</code> y el reducer con acciones <code>anadir, quitar, mover, campo, paso, enviada, vaciar</code>.</td></tr>
+<tr><td><code>context/SolicitudProvider.jsx</code></td><td><code>useReducer(reducer, undefined, cargarEstado)</code>: arranca leyendo localStorage. Un <code>useEffect</code> guarda el estado cada vez que cambia. <code>useMemo</code> para no recrear el value.</td></tr>
+<tr><td><code>reglas/acceso.js</code></td><td>La regla del IPREM: <code>ponderacion</code>, <code>rangoIngresos</code>, <code>cumpleIngresos</code>, <code>rentaMaxima</code>, <code>puedeAcceder</code>.</td></tr>
+<tr><td><code>utils/texto.js</code></td><td><code>normalizar()</code>: <code>normalize('NFD')</code> separa la tilde de la letra y el regex <code>[\u0300-\u036f]</code> la borra; luego <code>toLowerCase()</code>. «Coruña» → «coruna».</td></tr>
+<tr><td><code>utils/formato.js</code></td><td><code>formatearFecha</code> (2026-09-21 → 21/09/2026), <code>formatearRenta</code>, <code>formatearPlanta</code> (0 → «Planta baja», 4 → «4.ª planta»), <code>textoAccesibilidad</code> (null → «Sin dato»), <code>hoyISO</code> (fecha local).</td></tr>
+<tr><td><code>utils/validaciones.js</code></td><td><code>validarDocumento</code> (DNI/NIE + letra) y <code>validarTodo(borrador, seleccion)</code> → objeto <code>{campo: 'mensaje'}</code> solo con lo que falla.</td></tr>
+<tr><td><code>pages/Inicio.jsx</code></td><td>Hero + convocatorias (abiertas / cerradas y resueltas) + «Cómo funciona». Cuenta libres por convocatoria con <code>String(v.convocatoriaId)</code>.</td></tr>
+<tr><td><code>pages/Viviendas.jsx</code></td><td>Buscador. Filtros en la URL con <code>useSearchParams</code>, filtrado con <code>useMemo</code>, <code>ORDENES</code>, paginación con <code>slice</code>, 3 estados con <code>&lt;Estado&gt;</code>.</td></tr>
+<tr><td><code>pages/Detalle.jsx</code></td><td>Ficha. <code>useParams()</code> saca el <code>id</code>. Botón añadir solo si no está adjudicada y la convocatoria está <code>abierta</code>; si no se puede, muestra <code>motivoRechazo</code>.</td></tr>
+<tr><td><code>pages/Solicitud.jsx</code></td><td>4 pasos (Preferencias, Datos, Hogar, Revisión). <code>CAMPOS_POR_PASO</code> decide qué se valida al pulsar Siguiente. Modal → <code>crearSolicitud</code> → <code>dispatch({tipo:'enviada'})</code>.</td></tr>
+<tr><td><code>pages/MiSolicitud.jsx</code></td><td>Muestra la solicitud. <code>abierta = convocatoria?.estado === 'abierta'</code>: solo entonces enseña Modificar (<code>EditarSolicitud</code>, PUT) y Retirar (Modal, DELETE).</td></tr>
+<tr><td><code>pages/NoEncontrada.jsx</code></td><td>404 (ruta <code>*</code>).</td></tr>
+<tr><td><code>components/…</code></td><td><code>Header</code> (menú hamburguesa, <code>aria-expanded</code>), <code>Footer</code>, <code>BarraMovil</code>, <code>Hero</code> (formulario → <code>navigate</code>), <code>FilterPanel</code>, <code>DwellingCard</code>, <code>CallCard</code>, <code>Pagination</code>, <code>Estado</code>, <code>Boton</code>, <code>MensajeError</code>, <code>CampoTexto</code>, <code>Modal</code>, <code>PasoDatos</code>, <code>PasoHogar</code>, <code>PasoRevision</code>, <code>EditarSolicitud</code>.</td></tr>
+<tr><td><code>styles/variables.css</code></td><td>Variables CSS con los nombres de Figma: <code>--color-fondo</code>, <code>--color-primario</code>… y <code>--espacio-1…6</code>.</td></tr>
+<tr><td><code>reset-datos.cjs</code></td><td>Lee <code>db.original.json</code>, añade <code>solicitudes: []</code> y escribe <code>db.json</code>.</td></tr>
+<tr><td><code>package.json</code></td><td>Scripts: <code>dev</code> (vite), <code>api</code> (json-server :3001), <code>start</code> (los dos con <code>concurrently</code>), <code>reset-datos</code>, <code>build</code>, <code>lint</code>.</td></tr>
+<tr><td><code>.github/workflows/deploy.yml</code></td><td>Cada push: <code>npm ci</code>, <code>npm run build</code> con <code>BASE_PATH=/teitos/</code>, copia <code>index.html</code> a <code>404.html</code> y publica en GitHub Pages.</td></tr>
+</table>
+
+<h2>4 · El código que más preguntan (apréndete esto)</h2>
+
+<h3>4.1 Un hook con sus 3 estados — <code>hooks/useViviendas.js</code></h3>
+<pre>const [version, setVersion] = useState(0);
+const [resultado, setResultado] = useState({ version: -1, datos: [], error: null });
+const recargar = useCallback(() => setVersion(v => v + 1), []);   // botón Reintentar
+
+useEffect(() => {
+  let activo = true;                       // ¿sigue montado el componente?
+  getViviendas()
+    .then(lista => { if (activo) setResultado({ version, datos: lista.filter(v => !v.adjudicada), error: null }); })
+    .catch(e    => { if (activo) setResultado({ version, datos: [], error: e.message }); });
+  return () => { activo = false; };        // limpieza: si me desmonto, ignoro la respuesta
+}, [version]);                             // se repite cuando cambia version
+
+const cargando = resultado.version !== version;   // aún no ha llegado la respuesta de ESTA petición
+const vacio = !cargando &amp;&amp; !error &amp;&amp; datos.length === 0;</pre>
+<p><b>Explicación:</b> el <code>useEffect</code> se ejecuta al montar y cada vez que cambia <code>version</code>. Guardo junto a los datos a qué petición pertenecen; si no coincide con la actual, estoy <b>cargando</b>. <code>activo</code> evita actualizar un componente que ya no existe. <code>recargar</code> suma 1 a <code>version</code> → se repite la petición.</p>
+
+<h3>4.2 La función que hace todas las peticiones — <code>api/cliente.js</code></h3>
+<pre>export const API_URL = 'http://localhost:3001';
+export async function pedir(ruta, opciones) {
+  const respuesta = await fetch(`${API_URL}${ruta}`, opciones);
+  if (!respuesta.ok) { const error = new Error(`Error ${respuesta.status} al pedir ${ruta}`); error.estado = respuesta.status; throw error; }
+  if (respuesta.status === 204) return null;
+  return respuesta.json();
+}</pre>
+<p><code>fetch</code> <b>no</b> falla con un 404 o 500, solo si no hay red; por eso compruebo <code>respuesta.ok</code> (true si 200–299). <code>error.estado</code> me deja distinguir «no existe» (404) de «error del servidor».</p>
+
+<h3>4.3 La regla de acceso — <code>reglas/acceso.js</code></h3>
+<pre>IPREM_ANUAL = 8400;  VECES_MINIMO = 2;  VECES_MAXIMO = 7.5;  ESFUERZO_MAXIMO = 0.3;
+PONDERACION = { 1: 1, 2: 1.15, 3: 1.3, 4: 1.45, 5: 1.6 }   // 6 o más → 1.75
+rangoIngresos(p) = { minimo: 8400 × pond × 2,  maximo: 8400 × pond × 7.5 }
+rentaMaxima(ingresos) = ingresos / 12 × 0.3
+puedeAcceder(v, ingresos, personas) = cumpleIngresos(...) &amp;&amp; v.renta &lt;= rentaMaxima(ingresos)</pre>
+<div class="caja"><b>Ejemplo para decir de memoria:</b> 2 personas → 8.400 × 1,15 = 9.660. Mínimo 9.660 × 2 = <b>19.320 €</b>, máximo 9.660 × 7,5 = <b>72.450 €</b>. Con 30.000 € cumple, y la renta máxima es 30.000 / 12 × 0,3 = <b>750 €/mes</b>. En Pontevedra salen 116 viviendas.</div>
+
+<h3>4.4 Filtros en la URL + filtrado — <code>pages/Viviendas.jsx</code> <span class="sub">(simplificado)</span></h3>
+<pre>const [params, setParams] = useSearchParams();
+const filtros = { provincia: params.get('provincia') ?? '', personas: …, ingresos: …, accesibilidad: params.get('acc')?.split(',') };
+
+function actualizar(cambios, { mantenerPagina = false } = {}) {
+  setParams(anteriores => { const nuevos = new URLSearchParams(anteriores);
+    for (const [clave, valor] of Object.entries(cambios)) valor ? nuevos.set(clave, valor) : nuevos.delete(clave);
+    if (!mantenerPagina) nuevos.delete('pagina');       // al filtrar, vuelvo a la página 1
+    return nuevos; }, { replace: true });               // replace: no llena el historial
+}
+const resultados = useMemo(() => datos.filter(v =&gt; {
+    if (filtros.provincia &amp;&amp; v.provincia !== filtros.provincia) return false;
+    if (medidas.length &amp;&amp; !medidas.includes(v.accesibilidad)) return false;
+    if (reglaActiva &amp;&amp; !puedeAcceder(v, ingresos, personas)) return false;
+    if (q &amp;&amp; ![v.municipio, v.provincia, v.referencia].some(c =&gt; normalizar(c).includes(q))) return false;
+    return true; }).sort(ORDENES[orden].comparar), [dependencias]);
+const visibles = resultados.slice((pagina - 1) * POR_PAGINA, pagina * POR_PAGINA);</pre>
+<p><b>Por qué en el cliente y no con json-server:</b> la regla de acceso y la búsqueda sin tildes no se pueden pedir a json-server. Filtrar 979 viviendas tarda <b>menos de 2 ms</b> (lo medí); la descarga (564 KB) se hace una vez.</p>
+
+<h3>4.5 El reducer — <code>context/solicitudReducer.js</code> <span class="sub">(resumido)</span></h3>
+<pre>case 'anadir': if (motivoRechazo(estado, accion.vivienda)) return estado;
+               return { ...estado, seleccion: [...estado.seleccion, accion.vivienda] };
+case 'quitar': return { ...estado, seleccion: estado.seleccion.filter(s =&gt; s.id !== accion.id) };
+case 'mover':  { const i = …findIndex; const j = i + accion.desplazamiento;   // -1 sube, +1 baja
+                 const copia = [...estado.seleccion]; [copia[i], copia[j]] = [copia[j], copia[i]]; … }
+case 'campo':  return { ...estado, borrador: { ...estado.borrador, [accion.campo]: accion.valor } };
+case 'enviada': return { ...estadoInicial, solicitudId: accion.id };   // limpia todo y guarda el id</pre>
+<p>Un reducer es una función pura <code>(estado, accion) → nuevo estado</code>. <b>Nunca</b> modifica el estado: crea copias con <code>...</code> (spread). Se llama con <code>dispatch({ tipo: 'anadir', vivienda })</code>. <code>motivoRechazo</code> impide repetir, pasar de 3 o mezclar convocatorias.</p>
+
+<h3>4.6 localStorage — <code>context/SolicitudProvider.jsx</code></h3>
+<pre>const [estado, dispatch] = useReducer(solicitudReducer, undefined, cargarEstado);  // 3.er arg: estado inicial "perezoso"
+useEffect(() =&gt; { localStorage.setItem('teitos-solicitud', JSON.stringify(estado)); }, [estado]);</pre>
+<p><code>cargarEstado</code> lee <code>localStorage.getItem</code> y hace <code>JSON.parse</code> dentro de un <code>try/catch</code> (por si está bloqueado o corrupto).</p>
+
+<h3>4.7 Validación del DNI — <code>utils/validaciones.js</code></h3>
+<pre>/^([XYZ]|\d)(\d{7})([A-Z])$/     // NIE empieza por X/Y/Z (→ 0/1/2); DNI 8 cifras; + letra
+LETRAS_DNI[numero % 23] === letra  // 'TRWAGMYFPDXBNJZSQVHLCKE'   ejemplo válido: 12345678Z</pre>
+<p><b>Al vuelo:</b> un error solo se ve si el campo está en <code>tocados</code> (se marca al escribir o salir del campo). <b>Al pulsar Siguiente:</b> se marcan como tocados todos los campos del paso (<code>CAMPOS_POR_PASO</code>) y, si hay error, no avanza.</p>
+
+<h3>4.8 El modal — <code>components/Modal.jsx</code></h3>
+<p>Usa la etiqueta nativa <code>&lt;dialog&gt;</code> con <code>showModal()</code>: bloquea el resto de la página, mete el foco dentro, se cierra con <b>Esc</b> (evento <code>onClose</code>) y con clic en el fondo. <code>aria-labelledby</code> apunta al título con un id de <code>useId()</code>.</p>
+
+<h2>5 · Conceptos de React (con dónde los uso)</h2>
+<table>
+<tr><th style="width:17%">Concepto</th><th style="width:43%">Qué es</th><th>Dónde en mi proyecto</th></tr>
+<tr><td><b>Componente</b></td><td>Función que devuelve JSX. Nombre en mayúscula.</td><td>Todo <code>components/</code> y <code>pages/</code>.</td></tr>
+<tr><td><b>Props</b></td><td>Datos que el padre pasa al hijo (solo lectura).</td><td><code>&lt;DwellingCard vivienda={v} /&gt;</code>, <code>&lt;Boton variante="peligro"&gt;</code>.</td></tr>
+<tr><td><b>JSX</b></td><td>HTML dentro de JS. <code>className</code> en vez de class, <code>{}</code> para expresiones.</td><td>Todos los componentes.</td></tr>
+<tr><td><b>useState</b></td><td>Estado local; al cambiarlo, React vuelve a pintar.</td><td><code>menuAbierto</code> (Header), <code>tocados</code>, <code>modalAbierto</code>, <code>editando</code>.</td></tr>
+<tr><td><b>useEffect</b></td><td>Código que se ejecuta después de pintar (peticiones, localStorage). Array de dependencias = cuándo se repite. Return = limpieza.</td><td>Todos los hooks de datos; guardar en localStorage; <code>Modal</code> (abrir/cerrar dialog).</td></tr>
+<tr><td><b>useReducer</b></td><td>Estado complejo con acciones; <code>dispatch</code> + función reducer.</td><td><code>SolicitudProvider</code>.</td></tr>
+<tr><td><b>Context</b></td><td>Compartir datos sin pasar props por todos los niveles.</td><td><code>SolicitudContext</code>: lo usan Detalle, Solicitud, MiSolicitud, BarraMovil.</td></tr>
+<tr><td><b>useMemo</b></td><td>Guarda el resultado de un cálculo y solo lo repite si cambian las dependencias.</td><td>Filtrado de viviendas, lista de provincias, value del Provider.</td></tr>
+<tr><td><b>useCallback</b></td><td>Igual pero para funciones (misma función entre renders).</td><td><code>recargar</code> en los hooks.</td></tr>
+<tr><td><b>useRef</b> / <b>useId</b></td><td>Referencia a un elemento del DOM / id único accesible.</td><td><code>Modal</code> (<code>ref</code> al dialog y <code>useId</code> para el título).</td></tr>
+<tr><td><b>Hook propio</b></td><td>Función <code>useAlgo</code> que agrupa hooks para reutilizarlos.</td><td><code>useViviendas</code>, <code>useVivienda</code>, <code>useMiSolicitud</code>…</td></tr>
+<tr><td><b>key</b></td><td>Identificador único en listas para que React sepa qué elemento es cuál.</td><td><code>key={v.id}</code> en <code>.map()</code>.</td></tr>
+<tr><td><b>Renderizado condicional</b></td><td><code>cond &amp;&amp; &lt;X/&gt;</code> o <code>cond ? A : B</code>.</td><td>Estados cargando/error/vacío; botones de MiSolicitud.</td></tr>
+<tr><td><b>Formulario controlado</b></td><td>El input muestra <code>value</code> del estado y avisa con <code>onChange</code>.</td><td><code>CampoTexto</code>, filtros, pasos.</td></tr>
+<tr><td><b>StrictMode</b></td><td>En desarrollo ejecuta los efectos dos veces para detectar fallos. Por eso uso <code>activo</code>.</td><td><code>main.jsx</code>.</td></tr>
+</table>
+
+<h3>React Router 7</h3>
+<table>
+<tr><td style="width:24%"><code>BrowserRouter</code></td><td>Activa las rutas con URLs normales (sin #). En <code>main.jsx</code>.</td></tr>
+<tr><td><code>Routes</code> / <code>Route</code></td><td>Qué página pinto para cada <code>path</code>. <code>path="*"</code> = 404. En <code>App.jsx</code>.</td></tr>
+<tr><td><code>Link</code> / <code>NavLink</code></td><td>Enlaces sin recargar. <code>NavLink</code> añade <code>aria-current="page"</code> al activo (Header, BarraMovil).</td></tr>
+<tr><td><code>useParams</code></td><td>Lee <code>:id</code> de <code>/viviendas/:id</code> (Detalle).</td></tr>
+<tr><td><code>useNavigate</code></td><td>Navegar desde código (Hero al buscar, Detalle «Volver al listado»).</td></tr>
+<tr><td><code>useSearchParams</code></td><td>Leer/escribir <code>?provincia=…</code> (Viviendas).</td></tr>
+<tr><td><code>useLocation</code></td><td>Saber la ruta y el <code>#hash</code> actual (scroll en App).</td></tr>
+</table>
+
+<h3>JavaScript que sale en el código</h3>
+<div class="dos">
+<p><b>async / await</b>: esperar una promesa como si fuera código normal. <code>try/catch</code> para errores.</p>
+<p><b>Promesa</b>: valor que llegará. <code>.then</code> (ok), <code>.catch</code> (error), <code>.finally</code>.</p>
+<p><b>Promise.all</b>: lanza varias peticiones a la vez y espera a todas (MiSolicitud).</p>
+<p><b>Spread <code>...</code></b>: copia arrays/objetos (reducer, inmutabilidad).</p>
+<p><b>Desestructuración</b>: <code>const { datos, cargando } = useViviendas()</code>.</p>
+<p><b><code>?.</code> y <code>??</code></b>: <code>convocatoria?.estado</code> (no rompe si es null); <code>x ?? ''</code> (valor por defecto si es null/undefined).</p>
+<p><b>filter / map / sort / slice / some / find</b>: filtrar, pintar listas, ordenar, paginar, buscar.</p>
+<p><b>Template literals</b>: <code>`/viviendas/${id}`</code>.</p>
+</div>
+
+<h3>CSS</h3>
+<p><b>CSS Modules</b> (<code>X.module.css</code>): <code>import styles from './X.module.css'</code> y <code>className={styles.tarjeta}</code>; Vite cambia el nombre de la clase para que no choque con otras. <b>Variables CSS</b>: <code>var(--color-primario)</code>. <b>Responsive</b>: <code>@media (max-width: 760px)</code>, <code>grid</code> con <code>auto-fill, minmax()</code>. <b>Foco</b>: <code>:focus-visible</code> con contorno amarillo (<code>--color-acento</code>).</p>
+
+<h2>6 · Preguntas típicas y respuestas</h2>
+<div class="dos">
+<p class="q">¿Qué es una SPA?</p><p class="a">Una sola página HTML; React cambia el contenido sin recargar. La URL cambia con React Router.</p>
+<p class="q">¿Por qué json-server?</p><p class="a">Crea una API REST falsa a partir de un JSON en segundos: GET, POST, PUT, DELETE sin programar un backend.</p>
+<p class="q">¿Qué es db.original.json?</p><p class="a">Los datos tal como me los dieron. No se toca. <code>npm run reset-datos</code> lo copia a <code>db.json</code> con <code>solicitudes: []</code>.</p>
+<p class="q">¿Por qué crear «solicitudes» vacía?</p><p class="a">json-server 1.0 no crea colecciones nuevas: sin ella el primer POST da 404.</p>
+<p class="q">¿Dónde está la URL del servidor?</p><p class="a">Solo en <code>api/cliente.js</code>. Ningún componente hace fetch.</p>
+<p class="q">¿Por qué compruebas respuesta.ok?</p><p class="a">fetch solo falla sin red; un 404 o 500 «funciona». Con <code>ok</code> lo convierto en error.</p>
+<p class="q">¿Qué tres estados tiene cada petición?</p><p class="a">Cargando (esqueleto gris), error (aviso + Reintentar) y vacío (mensaje + Limpiar filtros). Componente <code>Estado</code>.</p>
+<p class="q">¿Por qué el id es texto y convocatoriaId número?</p><p class="a">Así vienen de json-server. Comparo con <code>String()</code> (Inicio) o comparo números con números (reducer).</p>
+<p class="q">¿Por qué no usas _embed?</p><p class="a">No funciona con estos datos. Pido la vivienda y luego su convocatoria (useVivienda).</p>
+<p class="q">¿Cómo quitas las adjudicadas?</p><p class="a">En <code>useViviendas</code>: <code>lista.filter(v =&gt; !v.adjudicada)</code>. De 1.200 quedan 979.</p>
+<p class="q">¿Cómo buscas sin tildes?</p><p class="a"><code>normalizar()</code> en los dos lados: <code>normalize('NFD')</code> + quitar <code>[\u0300-\u036f]</code> + minúsculas.</p>
+<p class="q">¿Por qué los filtros en la URL?</p><p class="a">Para poder copiar y pegar la búsqueda; además funcionan Atrás/Adelante y F5.</p>
+<p class="q">¿Por qué «personas» e «ingresos» no comparan un campo?</p><p class="a">Las viviendas no tienen esos campos: aplican la regla del IPREM de <code>reglas/acceso.js</code>.</p>
+<p class="q">¿Qué pasa si solo pongo ingresos?</p><p class="a">La regla necesita los dos; aviso «indica las personas y los ingresos» y no filtra por ellos.</p>
+<p class="q">¿Cómo paginas?</p><p class="a">En el cliente: <code>slice((pagina-1)*12, pagina*12)</code>. La página va en la URL. Al cambiar filtros, vuelve a la 1.</p>
+<p class="q">¿Por qué useMemo en el filtrado?</p><p class="a">Para no refiltrar 979 viviendas en cada render, solo si cambian datos o filtros.</p>
+<p class="q">¿Por qué useReducer y no useState?</p><p class="a">El estado de la solicitud tiene muchas acciones; el reducer las centraliza y es fácil de probar.</p>
+<p class="q">¿Por qué Context?</p><p class="a">Varias páginas usan la solicitud (Detalle añade, Solicitud la rellena, BarraMovil cuenta). Sin Context pasaría props por todo.</p>
+<p class="q">¿Cómo sobrevive a F5?</p><p class="a">El Provider guarda el estado en localStorage en un useEffect y lo lee al arrancar (<code>cargarEstado</code>).</p>
+<p class="q">¿Qué guardas en localStorage?</p><p class="a">Selección, borrador, paso actual y el id de la solicitud enviada (clave <code>teitos-solicitud</code>).</p>
+<p class="q">¿Por qué máximo 3 viviendas de una convocatoria?</p><p class="a">Una solicitud es para una convocatoria. <code>MAX_PREFERENCIAS</code> y <code>motivoRechazo()</code>.</p>
+<p class="q">¿Cómo ordenas las preferencias?</p><p class="a">Acción <code>mover</code> con desplazamiento -1/+1: intercambio las posiciones i y j en una copia del array.</p>
+<p class="q">¿Validación al vuelo y al enviar?</p><p class="a">Al vuelo: error visible cuando el campo está «tocado». Al pulsar Siguiente/Enviar: marco todos como tocados y no avanzo.</p>
+<p class="q">¿Qué datos manda el POST?</p><p class="a"><code>convocatoriaId</code>, <code>viviendas</code> (ids en orden), <code>solicitante</code>, <code>hogar</code>, <code>fechaEnvio</code>, <code>estado: 'enviada'</code>.</p>
+<p class="q">¿Cuándo se puede modificar o retirar?</p><p class="a">Solo si <code>convocatoria.estado === 'abierta'</code>. Si no, oculto los botones y lo explico.</p>
+<p class="q">¿PUT o PATCH?</p><p class="a">PUT: mando la solicitud completa (<code>...solicitud</code> + cambios). Es lo que pide el enunciado.</p>
+<p class="q">¿Qué hace el modal accesible?</p><p class="a"><code>&lt;dialog&gt;</code> con <code>showModal()</code>: foco dentro, Esc cierra, fondo inerte, título con <code>aria-labelledby</code>.</p>
+<p class="q">¿Cómo es accesible la app?</p><p class="a">Todo con teclado, foco amarillo visible, «Saltar al contenido», <code>label</code> en cada campo, <code>role="alert"/"status"</code>, <code>aria-current</code>, nada solo por color (iconos + texto).</p>
+<p class="q">¿«Ninguna información depende solo del color»?</p><p class="a">Estados con icono (● ✓ ▲ !) y texto; página activa subrayada; errores con «!» + mensaje.</p>
+<p class="q">¿Responsive?</p><p class="a">Media queries a 900, 760 y 560 px; grid con <code>minmax</code>; menú hamburguesa y barra inferior en móvil. Sin scroll horizontal a 390 px.</p>
+<p class="q">¿CSS Modules por qué?</p><p class="a">Clases locales a cada componente: no chocan nombres. Lo pide el enunciado (sin Bootstrap/Tailwind).</p>
+<p class="q">¿Relación Figma ↔ código?</p><p class="a">Mismos nombres de variables (<code>--color-primario</code>) y un componente React por componente de Figma con sus variantes como props (<code>Boton variante</code>, <code>Estado tipo</code>).</p>
+<p class="q">¿Qué hace la versión publicada sin servidor?</p><p class="a">Carga la interfaz; las peticiones fallan y muestra el estado de error con Reintentar. Para datos, <code>npm start</code> en local.</p>
+<p class="q">¿Cómo se publica?</p><p class="a">GitHub Actions: build con base <code>/teitos/</code>, copia index.html a 404.html (para que funcionen las rutas al recargar) y lo sube a Pages.</p>
+<p class="q">¿Medida de rendimiento?</p><p class="a">Descarga de viviendas ≈ 42 ms (564 KB); filtrar+ordenar &lt; 2 ms; JS 97 KB gzip; imágenes <code>loading="lazy"</code>.</p>
+<p class="q">¿Por qué la variable «activo» en los hooks?</p><p class="a">Si cambio de página antes de que llegue la respuesta, no actualizo un componente desmontado (y StrictMode ejecuta el efecto dos veces).</p>
+<p class="q">¿Qué haría con más tiempo?</p><p class="a">Paginación en el servidor (<code>_page</code>), arrastrar para ordenar, tests, login real y API desplegada.</p>
+<p class="q">¿Por qué el error 404 en /viviendas/99999?</p><p class="a"><code>pedir</code> lanza error con <code>estado 404</code>; Detalle lo detecta y muestra «La vivienda no existe».</p>
+<p class="q">¿Qué es key y por qué?</p><p class="a">Id único en listas; React lo usa para saber qué elemento cambió. Uso <code>v.id</code>, nunca el índice si la lista se reordena.</p>
+</div>
+
+<h2>7 · Modificaciones en caliente (paso a paso)</h2>
+<p class="sub">Guarda con Ctrl+S: Vite recarga solo. Si algo falla, Ctrl+Z y guarda.</p>
+<table>
+<tr><th style="width:28%">Te piden…</th><th>Haces…</th></tr>
+<tr><td>Mostrar 6 por página</td><td><code>pages/Viviendas.jsx</code> → <code>const POR_PAGINA = 12;</code> → <code>6</code>.</td></tr>
+<tr><td>Permitir 5 viviendas</td><td><code>context/solicitudReducer.js</code> → <code>MAX_PREFERENCIAS = 3</code> → <code>5</code> (los textos lo usan solos).</td></tr>
+<tr><td>Cambiar el color principal</td><td><code>styles/variables.css</code> → <code>--color-primario: #1c7058;</code> → otro (p. ej. <code>#1d4ed8</code>).</td></tr>
+<tr><td>Cambiar IPREM o esfuerzo</td><td><code>reglas/acceso.js</code> → <code>IPREM_ANUAL = 8400</code> o <code>ESFUERZO_MAXIMO = 0.3</code> → <code>0.35</code>.</td></tr>
+<tr><td>Nuevo orden (dormitorios)</td><td>En <code>ORDENES</code> de Viviendas.jsx añadir:<pre>dormitorios: { texto: 'Más dormitorios', comparar: (a, b) =&gt; b.dormitorios - a.dormitorios },</pre></td></tr>
+<tr><td>Buscar también por código postal</td><td>Viviendas.jsx: <code>[v.municipio, v.provincia, v.referencia]</code> → añadir <code>, v.codigoPostal</code>.</td></tr>
+<tr><td>Mostrar eficiencia en la tarjeta</td><td><code>components/DwellingCard.jsx</code>: sacar <code>eficiencia</code> en la desestructuración y añadir en el <code>&lt;dl&gt;</code>:<pre>&lt;div&gt;&lt;dt&gt;Eficiencia&lt;/dt&gt;&lt;dd&gt;{eficiencia}&lt;/dd&gt;&lt;/div&gt;</pre></td></tr>
+<tr><td>Filtro «solo con ascensor»</td><td>1) <code>FilterPanel.jsx</code>, dentro del fieldset:<pre>&lt;label&gt;&lt;input type="checkbox" checked={filtros.ascensor === 'si'}
+  onChange={e =&gt; onCambiar('ascensor', e.target.checked ? 'si' : '')} /&gt;Con ascensor&lt;/label&gt;</pre>2) Viviendas.jsx en <code>filtros</code>: <code>ascensor: params.get('ascensor') ?? '',</code><br>3) en el filter: <code>if (filtros.ascensor &amp;&amp; !v.ascensor) return false;</code> y añadir <code>filtros.ascensor</code> a las dependencias del <code>useMemo</code>.</td></tr>
+<tr><td>Cambiar texto del Hero / título</td><td><code>components/Hero.jsx</code> → el <code>&lt;h1&gt;</code>; título de pestaña en <code>index.html</code>.</td></tr>
+<tr><td>Nueva página /ayuda</td><td>1) <code>pages/Ayuda.jsx</code>: <code>export default function Ayuda() { return &lt;h1&gt;Ayuda&lt;/h1&gt;; }</code><br>2) <code>App.jsx</code>: <code>import Ayuda from './pages/Ayuda.jsx'</code> y <code>&lt;Route path="/ayuda" element={&lt;Ayuda /&gt;} /&gt;</code> (antes del <code>*</code>).<br>3) <code>Header.jsx</code>: <code>&lt;NavLink to="/ayuda"&gt;Ayuda&lt;/NavLink&gt;</code>.</td></tr>
+<tr><td>Cambiar mensaje de error de un campo</td><td><code>utils/validaciones.js</code> → el texto en <code>e.nombre = '…'</code>, etc.</td></tr>
+<tr><td>Que el teléfono acepte 8 cifras / prefijo</td><td><code>validaciones.js</code>: regex <code>/^[6-9]\d{8}$/</code>.</td></tr>
+<tr><td>Ocultar convocatorias resueltas</td><td><code>pages/Inicio.jsx</code>: <code>const otras = datos.filter(c =&gt; c.estado === 'cerrada');</code></td></tr>
+<tr><td>Cambiar el número de pasos / nombre</td><td><code>pages/Solicitud.jsx</code> → <code>const PASOS = ['Preferencias', …]</code>.</td></tr>
+<tr><td>Añadir log para depurar</td><td><code>console.log(resultados.length)</code> y F12 → Consola.</td></tr>
+</table>
+
+<h2>8 · Números para tener a mano</h2>
+<div class="dos">
+<p>16 convocatorias (8 abiertas, 3 cerradas, 5 resueltas) · 1.200 viviendas (979 libres, 221 adjudicadas) · renta 140–1.570 €.</p>
+<p>Pruebas: Pontevedra + 2 dorm. → 30 · renta 300–500 → 384 · <code>_page=1&amp;_per_page=12</code> → objeto con <code>data</code>.</p>
+<p>Puertos: web 5173 · API 3001. 12 por página. Máx. 3 viviendas.</p>
+<p>Casos: 773 (municipio largo) · 478 (sin dato accesibilidad) · 926 (4.ª sin ascensor) · 26-6-MAD (todo adjudicado).</p>
+</div>
+
+<div class="caja aviso"><b>Frases salvavidas</b><br>
+• «Déjame abrir el fichero y te lo enseño» → abre y lee el comentario de arriba de la función.<br>
+• «Esto lo resolví así porque el enunciado pedía…» (URL una sola vez, tres estados, regla en su fichero, Context + useReducer).<br>
+• Si no sabes algo: «No lo he implementado así, pero lo haría con…» (nunca te inventes que está hecho).<br>
+• Para cualquier hook: «se ejecuta al montar y cuando cambian sus dependencias; la función que devuelve limpia».</div>
+
+</body>
+</html>
