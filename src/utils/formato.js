@@ -27,3 +27,9 @@ export function textoAccesibilidad(valor) {
   if (valor === undefined || valor === null) return 'Sin dato';
   return ACCESIBILIDAD[valor] ?? valor;
 }
+// Fecha de hoy "AAAA-MM-DD" en hora local (toISOString usa UTC y de noche da el día anterior)
+export function hoyISO() {
+  const d = new Date();
+  const dos = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${dos(d.getMonth() + 1)}-${dos(d.getDate())}`;
+}

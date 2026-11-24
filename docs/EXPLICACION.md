@@ -24,6 +24,8 @@ db.json → json-server (puerto 3001) → api/ → hooks/ → pages/ → compone
 
 **Truco del `activo`**: si el usuario cambia de página antes de que llegue la respuesta, `activo = false` y no se toca el estado de un componente que ya no existe.
 
+**«Cargando» no se guarda a mano**: el hook guarda junto a los datos a qué petición pertenecen (`version` o `id`). Si no coinciden con la petición actual, es que la respuesta todavía no ha llegado → `cargando = true`. Así no hace falta llamar a `setCargando(true)` dentro del `useEffect` (lo que recomienda React).
+
 **Truco de `version`**: `recargar()` suma 1 a `version`; como `version` está en las dependencias del `useEffect`, la petición se repite.
 
 ## 3. Páginas (`src/pages`) y rutas (`App.jsx`)

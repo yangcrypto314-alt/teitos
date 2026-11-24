@@ -3,23 +3,20 @@ import { getSolicitud } from '../api/solicitudes.js';
 import { getConvocatoria } from '../api/convocatorias.js';
 import { getVivienda } from '../api/viviendas.js';
 
+const VACIO = { solicitud: null, convocatoria: null, viviendas: [] };
+
+// Pide la solicitud enviada, su convocatoria y sus viviendas
 export default function useMiSolicitud(id) {
-  const [datos, setDatos] = useState({
-    solicitud: null,
-    convocatoria: null,
-    viviendas: [],
-  });
-  const [cargando, setCargando] = useState(Boolean(id));
-  const [error, setError] = useState(null);
   const [version, setVersion] = useState(0);
+  // "clave" dice de qué petición (id + versión) son los datos guardados
+  const [resultado, setResultado] = useState({ clave: null, datos: VACIO, error: null });
 
   const recargar = useCallback(() => setVersion((v) => v + 1), []);
+  const clave = `${id}#${version}`;
 
   useEffect(() => {
     if (!id) return;
     let activo = true;
-    setCargando(true);
-    setError(null);
 
     getSolicitud(id)
       .then(async (solicitud) => {
@@ -28,19 +25,21 @@ export default function useMiSolicitud(id) {
           getConvocatoria(solicitud.convocatoriaId).catch(() => null),
           ...solicitud.viviendas.map((v) => getVivienda(v).catch(() => null)),
         ]);
-        if (activo) setDatos({ solicitud, convocatoria, viviendas });
+        if (activo) setResultado({ clave, datos: { solicitud, convocatoria, viviendas }, error: null });
       })
       .catch((e) => {
-        if (activo) setError(e);
-      })
-      .finally(() => {
-        if (activo) setCargando(false);
+        if (activo) setResultado({ clave, datos: VACIO, error: e });
       });
 
     return () => {
       activo = false;
     };
-  }, [id, version]);
+  }, [id, clave]);
+
+  // Sin id no hay nada que cargar
+  const cargando = Boolean(id) && resultado.clave !== clave;
+  const datos = id ? resultado.datos : VACIO;
+  const error = cargando || !id ? null : resultado.error;
 
   return { ...datos, cargando, error, recargar };
 }

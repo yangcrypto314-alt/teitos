@@ -3,7 +3,7 @@ import PasoDatos from './PasoDatos.jsx';
 import PasoHogar from './PasoHogar.jsx';
 import { actualizarSolicitud } from '../api/solicitudes.js';
 import { validarTodo } from '../utils/validaciones.js';
-import { formatearRenta } from '../utils/formato.js';
+import { formatearRenta, hoyISO } from '../utils/formato.js';
 import styles from '../pages/Solicitud.module.css';
 
 const CAMPOS = [
@@ -70,7 +70,7 @@ export default function EditarSolicitud({ solicitud, viviendas, onGuardada, onCa
           personas: Number(borrador.personas),
           ingresos: Number(borrador.ingresos),
         },
-        fechaModificacion: new Date().toISOString().slice(0, 10),
+        fechaModificacion: hoyISO(),
       });
       onGuardada();
     } catch (err) {

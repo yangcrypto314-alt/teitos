@@ -8,7 +8,7 @@ import useSolicitud from '../hooks/useSolicitud.js';
 import { crearSolicitud } from '../api/solicitudes.js';
 import { MAX_PREFERENCIAS } from '../context/solicitudReducer.js';
 import { validarTodo } from '../utils/validaciones.js';
-import { formatearRenta } from '../utils/formato.js';
+import { formatearRenta, hoyISO } from '../utils/formato.js';
 import styles from './Solicitud.module.css';
 
 const PASOS = ['Preferencias', 'Datos personales', 'Hogar', 'Revisión'];
@@ -117,7 +117,7 @@ export default function Solicitud() {
           personas: Number(borrador.personas),
           ingresos: Number(borrador.ingresos),
         },
-        fechaEnvio: new Date().toISOString().slice(0, 10),
+        fechaEnvio: hoyISO(),
         estado: 'enviada',
       });
       dispatch({ tipo: 'enviada', id: creada.id });
