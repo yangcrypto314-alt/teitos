@@ -1,11 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
-import './index.css'
-import './styles/variables.css'
-import './styles/base.css'
+import './estilos/global.css'
+import './estilos/variables.css'
+import './estilos/base.css'
 import App from './App.jsx'
-import SolicitudProvider from './context/SolicitudProvider.jsx'
+import SolicitudProvider from './estado/SolicitudProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

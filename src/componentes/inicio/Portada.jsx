@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router';
-import styles from './Hero.module.css';
+import styles from './Portada.module.css';
 
 // Portada con la ilustración y el buscador rápido.
 // El formulario lleva sus valores a la URL del buscador: /viviendas?provincia=…
-function Hero({ provincias = [] }) {
+function Portada({ provincias = [] }) {
   const navigate = useNavigate();
 
   function buscar(e) {
@@ -21,7 +21,7 @@ function Hero({ provincias = [] }) {
       <section className={styles.hero} aria-labelledby="portada-titulo">
         <div className={`${styles.interior} contenedor`}>
           <div className={styles.texto}>
-            <p className={styles.eyebrow}>Teitos · Vivienda con raíces</p>
+            <p className={styles.eyebrow}>Queisiños · Vivienda con raíces</p>
             <h1 id="portada-titulo">Un hogar que<br />encaja contigo.</h1>
             <p className={styles.descripcion}>
               Encuentra una vivienda asequible y solicita tu plaza de forma sencilla.
@@ -103,7 +103,7 @@ function Hero({ provincias = [] }) {
           </div>
         </form>
       </section>
-      <section className={`${styles.confianza} contenedor`} aria-label="Teitos en cifras">
+      <section className={`${styles.confianza} contenedor`} aria-label="Queisiños en cifras">
         <span>Más de 1.200 viviendas</span>
         <span>8 provincias</span>
         <span>Proceso transparente</span>
@@ -112,4 +112,4 @@ function Hero({ provincias = [] }) {
   );
 }
 
-export default Hero;
+export default Portada;

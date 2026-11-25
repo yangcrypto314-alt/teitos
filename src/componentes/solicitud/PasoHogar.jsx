@@ -1,6 +1,6 @@
-import CampoTexto from './CampoTexto.jsx';
-import MensajeError from './MensajeError.jsx';
-import styles from './CampoTexto.module.css';
+import CampoTexto from '../comunes/CampoTexto.jsx';
+import MensajeError from '../comunes/MensajeError.jsx';
+import styles from '../comunes/CampoTexto.module.css';
 
 export default function PasoHogar({ borrador, errores, tocados, cambiar, tocar }) {
   const err = (campo) => (tocados[campo] ? errores[campo] : undefined);

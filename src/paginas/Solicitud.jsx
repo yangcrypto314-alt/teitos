@@ -1,14 +1,14 @@
 ﻿import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
-import Modal from '../components/Modal.jsx';
-import PasoDatos from '../components/PasoDatos.jsx';
-import PasoHogar from '../components/PasoHogar.jsx';
-import PasoRevision from '../components/PasoRevision.jsx';
+import Modal from '../componentes/comunes/Modal.jsx';
+import PasoDatos from '../componentes/solicitud/PasoDatos.jsx';
+import PasoHogar from '../componentes/solicitud/PasoHogar.jsx';
+import PasoRevision from '../componentes/solicitud/PasoRevision.jsx';
 import useSolicitud from '../hooks/useSolicitud.js';
 import { crearSolicitud } from '../api/solicitudes.js';
-import { MAX_PREFERENCIAS } from '../context/solicitudReducer.js';
-import { validarTodo } from '../utils/validaciones.js';
-import { formatearRenta, hoyISO } from '../utils/formato.js';
+import { MAX_PREFERENCIAS } from '../estado/solicitudReducer.js';
+import { validarTodo } from '../utilidades/validaciones.js';
+import { formatearRenta, hoyISO } from '../utilidades/formato.js';
 import styles from './Solicitud.module.css';
 
 const PASOS = ['Preferencias', 'Datos personales', 'Hogar', 'Revisión'];

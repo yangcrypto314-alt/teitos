@@ -1,20 +1,16 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router';
-import styles from './Header.module.css';
+import Logo from '../comunes/Logo.jsx';
+import styles from './Cabecera.module.css';
 
-function Header() {
+function Cabecera() {
   const [menuAbierto, setMenuAbierto] = useState(false);
 
   return (
     <header className={`${styles.cabecera} cabecera`}>
       <div className="contenedor">
-        <Link className={styles.marca} to="/" aria-label="Teitos, inicio">
-          <span className={styles.icono} aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="m3 11 9-7 9 7M5 10.5V20h14v-9.5M10 20v-6h4v6" />
-            </svg>
-          </span>
-          <span>teitos</span>
+        <Link className={styles.marca} to="/" aria-label="Queisiños, inicio">
+          <Logo tono="claro" />
         </Link>
         <button
           className={styles.alternar}
@@ -32,8 +28,8 @@ function Header() {
           aria-label="Principal"
         >
           <NavLink to="/viviendas" onClick={() => setMenuAbierto(false)}>Viviendas</NavLink>
-          <NavLink to="/#convocatorias" onClick={() => setMenuAbierto(false)}>Convocatorias</NavLink>
-          <NavLink to="/#como-funciona" onClick={() => setMenuAbierto(false)}>Cómo funciona</NavLink>
+          <Link to="/#convocatorias" onClick={() => setMenuAbierto(false)}>Convocatorias</Link>
+          <Link to="/#como-funciona" onClick={() => setMenuAbierto(false)}>Cómo funciona</Link>
           <NavLink to="/mi-solicitud" onClick={() => setMenuAbierto(false)}>Mi solicitud</NavLink>
           <Link className={styles.acceder} to="/mi-solicitud" onClick={() => setMenuAbierto(false)}>
             Acceder
@@ -44,4 +40,4 @@ function Header() {
   )
 }
 
-export default Header
+export default Cabecera

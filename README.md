@@ -1,4 +1,4 @@
-# Teitos
+# Queisiños
 
 Portal de alquiler público asequible: convocatorias, buscador de viviendas con filtros y solicitud por pasos. Proyecto de aula de PMDM hecho con React + Vite y una API local con json-server.
 
@@ -42,15 +42,20 @@ Para dejar los datos como al principio (sin solicitudes): `npm run reset-datos`.
 
 ```
 src/
-  api/        Peticiones al servidor (la URL está solo en api/cliente.js)
-  hooks/      useViviendas, useConvocatorias, useVivienda, useMiSolicitud, useSolicitud
-  components/ Piezas reutilizables (Boton, CallCard, DwellingCard, FilterPanel, Modal…)
-  pages/      Una por ruta: Inicio, Viviendas, Detalle, Solicitud, MiSolicitud, NoEncontrada
-  context/    Estado global de la solicitud (Context + useReducer + localStorage)
-  reglas/     acceso.js: la regla de acceso por ingresos (IPREM)
-  utils/      Formatos, normalizar texto y validaciones
-  styles/     Variables CSS (mismos nombres que en Figma) y estilos base
-docs/         Explicación del código
+  api/                    Peticiones al servidor (la URL está solo en api/cliente.js)
+  componentes/
+    comunes/              Piezas reutilizables: Boton, CampoTexto, Estado, Logo, MensajeError, Modal, Paginacion
+    estructura/           Marco de todas las páginas: Cabecera, Pie, BarraMovil
+    inicio/               Portada y TarjetaConvocatoria
+    viviendas/            TarjetaVivienda y Filtros
+    solicitud/            Pasos del formulario y EditarSolicitud
+  paginas/                Una por ruta: Inicio, Viviendas, Detalle, Solicitud, MiSolicitud, NoEncontrada
+  hooks/                  useViviendas, useConvocatorias, useVivienda, useMiSolicitud, useSolicitud
+  estado/                 Estado global de la solicitud (Context + useReducer + localStorage)
+  reglas/                 acceso.js: la regla de acceso por ingresos (IPREM)
+  utilidades/             Formatos, normalizar texto y validaciones
+  estilos/                Variables CSS (mismos nombres que en Figma), base, global y layout
+docs/                     Memoria, chuleta, explicación del código y exportación del Figma
 ```
 
 La explicación de cada parte está en [docs/EXPLICACION.md](docs/EXPLICACION.md).

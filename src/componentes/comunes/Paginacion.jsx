@@ -1,4 +1,4 @@
-import styles from './Pagination.module.css';
+import styles from './Paginacion.module.css';
 
 // Devuelve las páginas a mostrar, con «…» en los huecos.
 // Ejemplo con 54 páginas y la 5 activa: 1 … 4 5 6 … 54
@@ -17,7 +17,7 @@ function paginasVisibles(pagina, total) {
 }
 
 // Componente «Paginación» de Figma: ‹ 1 2 3 … 8 ›
-export default function Pagination({ pagina, totalPaginas, onCambiar }) {
+export default function Paginacion({ pagina, totalPaginas, onCambiar }) {
   if (totalPaginas <= 1) return null;
 
   return (

@@ -58,3 +58,8 @@ textarea:focus-visible {
 [role='alert'] {
   color: var(--color-error);
 }
+
+/* La cabecera es fija: al saltar a un #ancla, que el título no quede debajo */
+[id] {
+  scroll-margin-top: 88px;
+}

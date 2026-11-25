@@ -1,4 +1,4 @@
-import { formatearRenta } from '../utils/formato.js';
+import { formatearRenta } from '../../utilidades/formato.js';
 
 export default function PasoRevision({ seleccion, borrador, className }) {
   const personas = borrador.personas === '6' ? '6 o más' : borrador.personas;

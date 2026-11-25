@@ -1,0 +1,135 @@
+/* Barra superior en azul tinta: enlaza con la portada */
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+  background: var(--color-texto);
+  color: var(--color-fondo);
+}
+
+.cabecera > div {
+  display: flex;
+  min-height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.marca {
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.4vw, 32px);
+}
+
+.menu a {
+  position: relative;
+  padding: 8px 0;
+  color: #e7e2d8;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: #ffffff;
+}
+
+/* Página actual: subrayado mostaza (no depende solo del color: también aria-current) */
+.menu a[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--color-acento);
+}
+
+.menu .acceder {
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--color-acento);
+  color: var(--color-texto);
+  font-weight: 750;
+}
+
+.menu .acceder:hover {
+  background: var(--color-tinta-clara);
+  color: var(--color-texto);
+}
+
+.menu .acceder::after {
+  display: none;
+}
+
+.alternar {
+  display: none;
+  width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--color-fondo);
+  font-size: 1.4rem;
+}
+
+@media (max-width: 760px) {
+  .cabecera > div {
+    min-height: 64px;
+  }
+
+  .alternar {
+    display: inline-grid;
+    place-items: center;
+  }
+
+  .menu {
+    position: absolute;
+    z-index: 5;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    align-items: stretch;
+    gap: 4px;
+    padding: 12px 24px 20px;
+    background: var(--color-texto);
+    box-shadow: 0 16px 32px rgb(31 42 68 / 25%);
+  }
+
+  .menu.abierto {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu a {
+    padding: 12px;
+  }
+
+  .menu a[aria-current="page"]::after {
+    right: auto;
+    top: 12px;
+    bottom: 12px;
+    left: 0;
+    width: 3px;
+    height: auto;
+  }
+
+  .menu .acceder {
+    margin-top: 8px;
+    text-align: center;
+  }
+}
+
+.alternar:hover,
+.alternar[aria-expanded="true"] {
+  background: rgb(255 255 255 / 10%);
+  color: var(--color-fondo);
+}

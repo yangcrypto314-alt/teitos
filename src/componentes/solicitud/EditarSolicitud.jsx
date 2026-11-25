@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import PasoDatos from './PasoDatos.jsx';
 import PasoHogar from './PasoHogar.jsx';
-import { actualizarSolicitud } from '../api/solicitudes.js';
-import { validarTodo } from '../utils/validaciones.js';
-import { formatearRenta, hoyISO } from '../utils/formato.js';
-import styles from '../pages/Solicitud.module.css';
+import { actualizarSolicitud } from '../../api/solicitudes.js';
+import { validarTodo } from '../../utilidades/validaciones.js';
+import { formatearRenta, hoyISO } from '../../utilidades/formato.js';
+import styles from '../../paginas/Solicitud.module.css';
 
 const CAMPOS = [
   'nombre', 'apellidos', 'documento', 'email', 'telefono', 'personas', 'ingresos',

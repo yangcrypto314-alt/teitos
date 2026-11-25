@@ -1,15 +1,15 @@
 import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router'
-import './App.css'
-import Header from './components/Header.jsx'
-import Footer from './components/Footer.jsx'
-import BarraMovil from './components/BarraMovil.jsx'
-import Inicio from './pages/Inicio.jsx'
-import Viviendas from './pages/Viviendas.jsx'
-import Detalle from './pages/Detalle.jsx'
-import Solicitud from './pages/Solicitud.jsx'
-import MiSolicitud from './pages/MiSolicitud.jsx'
-import NoEncontrada from './pages/NoEncontrada.jsx'
+import './estilos/layout.css'
+import Cabecera from './componentes/estructura/Cabecera.jsx'
+import Pie from './componentes/estructura/Pie.jsx'
+import BarraMovil from './componentes/estructura/BarraMovil.jsx'
+import Inicio from './paginas/Inicio.jsx'
+import Viviendas from './paginas/Viviendas.jsx'
+import Detalle from './paginas/Detalle.jsx'
+import Solicitud from './paginas/Solicitud.jsx'
+import MiSolicitud from './paginas/MiSolicitud.jsx'
+import NoEncontrada from './paginas/NoEncontrada.jsx'
 
 // Al cambiar de página se sube arriba; si la URL lleva #ancla, se baja hasta ella
 function useScrollAlNavegar() {
@@ -35,7 +35,7 @@ function App() {
       <a className="saltar" href="#contenido">
         Saltar al contenido
       </a>
-      <Header />
+      <Cabecera />
       <main id="contenido" className="contenedor" tabIndex={-1}>
         <Routes>
           <Route path="/" element={<Inicio />} />
@@ -46,7 +46,7 @@ function App() {
           <Route path="*" element={<NoEncontrada />} />
         </Routes>
       </main>
-      <Footer />
+      <Pie />
       <BarraMovil />
     </>
   )

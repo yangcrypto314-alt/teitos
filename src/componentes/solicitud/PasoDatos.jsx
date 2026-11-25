@@ -1,4 +1,4 @@
-import CampoTexto from './CampoTexto.jsx';
+import CampoTexto from '../comunes/CampoTexto.jsx';
 
 export default function PasoDatos({ borrador, errores, tocados, cambiar, tocar }) {
   const err = (campo) => (tocados[campo] ? errores[campo] : undefined);

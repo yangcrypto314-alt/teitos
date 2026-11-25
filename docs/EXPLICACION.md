@@ -1,16 +1,16 @@
-# Teitos: qué hace cada cosa (versión corta)
+# Queisiños: qué hace cada cosa (versión corta)
 
 ## 1. Cómo viajan los datos
 
 ```
-db.json → json-server (puerto 3001) → api/ → hooks/ → pages/ → components/
+db.json → json-server (puerto 3001) → api/ → hooks/ → paginas/ → componentes/
 ```
 
 1. **json-server** convierte `db.json` en una API REST.
 2. **api/cliente.js** tiene la URL **una sola vez** y la función `pedir()`. Todas las peticiones pasan por ella; si `respuesta.ok` es falso, lanza un error.
 3. **api/viviendas.js, convocatorias.js, solicitudes.js** son atajos: `getViviendas()`, `crearSolicitud()` (POST), `actualizarSolicitud()` (PUT), `retirarSolicitud()` (DELETE).
 4. **hooks/** hacen el `fetch` dentro de un `useEffect` y devuelven los **tres estados**: `cargando`, `error` y `vacio`, más `recargar()` para el botón «Reintentar».
-5. **pages/** usan los hooks y pintan los **components/**.
+5. **paginas/** usan los hooks y pintan los **componentes/**.
 
 ## 2. Hooks (`src/hooks`)
 
@@ -32,7 +32,7 @@ db.json → json-server (puerto 3001) → api/ → hooks/ → pages/ → compone
 
 | Ruta | Página | Qué hace |
 | --- | --- | --- |
-| `/` | `Inicio` | Hero con buscador rápido, convocatorias (abiertas y luego cerradas/resueltas) y «Cómo funciona». |
+| `/` | `Inicio` | Portada con buscador rápido, convocatorias (abiertas y luego cerradas/resueltas) y «Cómo funciona». |
 | `/viviendas` | `Viviendas` | Buscador: texto, 4 filtros, orden y paginación. **Todo va en la URL**. |
 | `/viviendas/:id` | `Detalle` | Ficha de la vivienda y botón para añadirla a la solicitud. |
 | `/solicitud` | `Solicitud` | Formulario en 4 pasos + modal de confirmación + POST. |
@@ -73,21 +73,31 @@ Ejemplo: 2 personas y 30.000 € → rango 19.320 € – 72.450 € ✓ → ren
 - `motivoRechazo()`: no deja añadir más de 3 viviendas, ni repetidas, ni de convocatorias distintas.
 - `SolicitudProvider.jsx`: guarda el estado en `localStorage` cada vez que cambia y lo recupera al recargar → **la selección y el borrador sobreviven a F5**.
 
-## 6. Componentes (`src/components`) = componentes de Figma
+## 6. Componentes (`src/componentes`) = componentes de Figma
+
+Están repartidos en subcarpetas según dónde se usan:
+
+| Carpeta | Qué hay |
+| --- | --- |
+| `comunes/` | Piezas que se usan en todas partes: `Boton`, `CampoTexto`, `Estado`, `Logo`, `MensajeError`, `Modal`, `Paginacion` |
+| `estructura/` | El marco de todas las páginas: `Cabecera`, `Pie`, `BarraMovil` |
+| `inicio/` | `Portada` y `TarjetaConvocatoria` |
+| `viviendas/` | `TarjetaVivienda` y `Filtros` |
+| `solicitud/` | `PasoDatos`, `PasoHogar`, `PasoRevision`, `EditarSolicitud` |
 
 | Figma | React | Variantes (props) |
 | --- | --- | --- |
 | Botón | `Boton` | `variante="primario" / "secundario" / "peligro"`, `error`, `disabled`, `to` (enlace) |
 | Campo | `CampoTexto` | `error`, `ayuda`, `tipo` |
 | Mensaje de error | `MensajeError` | icono «!» + texto (no depende solo del color) |
-| Tarjeta de vivienda | `DwellingCard` | `desactivada` |
-| Tarjeta de convocatoria | `CallCard` | según `estado` (abierta/cerrada/resuelta) y `libres` |
-| Paginación | `Pagination` | `pagina`, `totalPaginas` → ‹ 1 … 4 5 6 … 54 › |
+| Tarjeta de vivienda | `TarjetaVivienda` | `desactivada` |
+| Tarjeta de convocatoria | `TarjetaConvocatoria` | según `estado` (abierta/cerrada/resuelta) y `libres` |
+| Paginación | `Paginacion` | `pagina`, `totalPaginas` → ‹ 1 … 4 5 6 … 54 › |
 | Estados del buscador | `Estado` | `tipo="cargando" / "error" / "vacio"` |
 
-Otros: `Header` (menú hamburguesa en móvil), `Footer`, `BarraMovil` (barra inferior en móvil), `Hero` (portada + buscador rápido), `FilterPanel` (filtros), `Modal` (usa `<dialog>` nativo: atrapa el foco y se cierra con Esc), `PasoDatos` / `PasoHogar` / `PasoRevision` (pasos del formulario), `EditarSolicitud`.
+Otros: `Logo` (dos tejados + el nombre; `tono="claro"` u `"oscuro"`), `Cabecera` (barra azul fija arriba, menú hamburguesa en móvil), `Pie`, `BarraMovil` (barra inferior en móvil), `Portada` (portada + buscador rápido), `Filtros` (filtros), `Modal` (usa `<dialog>` nativo: atrapa el foco y se cierra con Esc), `PasoDatos` / `PasoHogar` / `PasoRevision` (pasos del formulario), `EditarSolicitud`.
 
-## 7. Validación del formulario (`src/utils/validaciones.js`)
+## 7. Validación del formulario (`src/utilidades/validaciones.js`)
 
 - `validarTodo()` devuelve `{ campo: 'mensaje' }` solo con los campos que fallan.
 - **Al vuelo**: el error de un campo aparece cuando lo has tocado (`tocados`).

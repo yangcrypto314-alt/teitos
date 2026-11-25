@@ -1,10 +1,10 @@
 import { Link, useNavigate, useParams } from 'react-router';
 import useVivienda from '../hooks/useVivienda.js';
 import useSolicitud from '../hooks/useSolicitud.js';
-import { MAX_PREFERENCIAS, motivoRechazo } from '../context/solicitudReducer.js';
-import Boton from '../components/Boton.jsx';
-import Estado from '../components/Estado.jsx';
-import { formatearFecha, formatearPlanta, formatearRenta, textoAccesibilidad } from '../utils/formato.js';
+import { MAX_PREFERENCIAS, motivoRechazo } from '../estado/solicitudReducer.js';
+import Boton from '../componentes/comunes/Boton.jsx';
+import Estado from '../componentes/comunes/Estado.jsx';
+import { formatearFecha, formatearPlanta, formatearRenta, textoAccesibilidad } from '../utilidades/formato.js';
 import styles from './Detalle.module.css';
 
 export default function Detalle() {

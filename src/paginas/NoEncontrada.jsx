@@ -1,4 +1,4 @@
-﻿import Boton from '../components/Boton.jsx';
+import Boton from '../componentes/comunes/Boton.jsx';
 import styles from './NoEncontrada.module.css';
 
 // Página 404: cualquier ruta que no exista acaba aquí (path="*")
@@ -11,7 +11,7 @@ export default function NoEncontrada() {
         <text x="100" y="98" textAnchor="middle" fontSize="30" fontWeight="700" fill="#1F2A44">?</text>
       </svg>
       <p className={styles.codigo}>Error 404</p>
-      <h1 id="titulo-404">Este teito no existe</h1>
+      <h1 id="titulo-404">Esta casa no existe</h1>
       <p>La dirección que has escrito no existe o ha cambiado. Pero hay muchas viviendas esperándote.</p>
       <div className={styles.acciones}>
         <Boton to="/viviendas">Ver viviendas</Boton>

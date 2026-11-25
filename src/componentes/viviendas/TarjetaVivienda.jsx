@@ -1,10 +1,10 @@
 import { Link } from 'react-router';
-import styles from './DwellingCard.module.css';
-import { formatearPlanta, textoAccesibilidad } from '../utils/formato.js';
+import styles from './TarjetaVivienda.module.css';
+import { formatearPlanta, textoAccesibilidad } from '../../utilidades/formato.js';
 
 // Componente «Tarjeta de vivienda» de Figma.
 // Variante: desactivada (vivienda adjudicada) se pinta atenuada y sin enlace.
-export default function DwellingCard({ vivienda, desactivada = false }) {
+export default function TarjetaVivienda({ vivienda, desactivada = false }) {
   const {
     id, referencia, municipio, provincia, tipologia,
     superficie, renta, planta, ascensor, accesibilidad,

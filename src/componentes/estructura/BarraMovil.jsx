@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router';
-import useSolicitud from '../hooks/useSolicitud.js';
+import useSolicitud from '../../hooks/useSolicitud.js';
 import styles from './BarraMovil.module.css';
 
 // Barra inferior que solo aparece en móvil (Figma 06-07): Inicio · Buscar · Mi solicitud

@@ -1,0 +1,53 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.marca {
+  width: 44px;
+  height: 32px;
+  overflow: visible;
+}
+
+.tejadoGrande,
+.tejadoPequeno {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4.5;
+}
+
+.tejadoGrande {
+  stroke: var(--color-terracota-claro);
+}
+
+.tejadoPequeno {
+  stroke: var(--color-acento);
+}
+
+.ventana {
+  fill: var(--color-acento);
+}
+
+.nombre {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* Sobre fondo oscuro */
+.claro .nombre {
+  color: var(--color-fondo);
+}
+
+/* Sobre fondo claro */
+.oscuro .nombre {
+  color: var(--color-texto);
+}
+
+.oscuro .tejadoGrande {
+  stroke: var(--color-primario);
+}

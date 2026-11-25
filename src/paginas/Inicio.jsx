@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router';
-import CallCard from '../components/CallCard.jsx';
-import Estado from '../components/Estado.jsx';
-import Hero from '../components/Hero.jsx';
+import TarjetaConvocatoria from '../componentes/inicio/TarjetaConvocatoria.jsx';
+import Estado from '../componentes/comunes/Estado.jsx';
+import Portada from '../componentes/inicio/Portada.jsx';
 import useConvocatorias from '../hooks/useConvocatorias.js';
 import useViviendas from '../hooks/useViviendas.js';
-import { MAX_PREFERENCIAS } from '../context/solicitudReducer.js';
+import { MAX_PREFERENCIAS } from '../estado/solicitudReducer.js';
 import styles from './Inicio.module.css';
 
 const PASOS = [
@@ -53,7 +53,7 @@ export default function Inicio() {
       <>
         <div className={styles.rejilla}>
           {abiertas.map((c) => (
-            <CallCard key={c.id} convocatoria={c} libres={contar(c)} />
+            <TarjetaConvocatoria key={c.id} convocatoria={c} libres={contar(c)} />
           ))}
         </div>
 
@@ -62,7 +62,7 @@ export default function Inicio() {
             <h2 className={styles.subtitulo}>Cerradas y resueltas</h2>
             <div className={styles.rejilla}>
               {otras.map((c) => (
-                <CallCard key={c.id} convocatoria={c} libres={contar(c)} />
+                <TarjetaConvocatoria key={c.id} convocatoria={c} libres={contar(c)} />
               ))}
             </div>
           </>
@@ -73,7 +73,7 @@ export default function Inicio() {
 
   return (
     <>
-      <Hero provincias={provincias} />
+      <Portada provincias={provincias} />
 
       <section className={styles.seccion} id="convocatorias" aria-labelledby="convocatorias-titulo">
         <div className={styles.titulo}>

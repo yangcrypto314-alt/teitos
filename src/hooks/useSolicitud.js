@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { SolicitudContext } from '../context/solicitudContext.js';
+import { SolicitudContext } from '../estado/solicitudContext.js';
 
 export default function useSolicitud() {
   const contexto = useContext(SolicitudContext);

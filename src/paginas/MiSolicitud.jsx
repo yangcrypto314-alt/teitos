@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
-import EditarSolicitud from '../components/EditarSolicitud.jsx';
-import Boton from '../components/Boton.jsx';
-import Estado from '../components/Estado.jsx';
-import Modal from '../components/Modal.jsx';
-import PasoRevision from '../components/PasoRevision.jsx';
+import EditarSolicitud from '../componentes/solicitud/EditarSolicitud.jsx';
+import Boton from '../componentes/comunes/Boton.jsx';
+import Estado from '../componentes/comunes/Estado.jsx';
+import Modal from '../componentes/comunes/Modal.jsx';
+import PasoRevision from '../componentes/solicitud/PasoRevision.jsx';
 import useMiSolicitud from '../hooks/useMiSolicitud.js';
 import useSolicitud from '../hooks/useSolicitud.js';
 import { retirarSolicitud } from '../api/solicitudes.js';
-import { formatearFecha } from '../utils/formato.js';
-import styles from '../pages/Solicitud.module.css';
+import { formatearFecha } from '../utilidades/formato.js';
+import styles from './Solicitud.module.css';
 
 export default function MiSolicitud() {
   const { estado, dispatch } = useSolicitud();

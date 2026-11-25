@@ -1,4 +1,4 @@
-import styles from './FilterPanel.module.css';
+import styles from './Filtros.module.css';
 
 const MEDIDAS = [
   { valor: 'adaptada', texto: 'Adaptada' },
@@ -7,7 +7,7 @@ const MEDIDAS = [
 
 // Panel lateral con los cuatro filtros del portal.
 // No guarda estado propio: recibe los filtros y avisa al padre con onCambiar.
-export default function FilterPanel({ filtros, provincias, onCambiar, onLimpiar }) {
+export default function Filtros({ filtros, provincias, onCambiar, onLimpiar }) {
   function alternarMedida(valor) {
     const actuales = filtros.accesibilidad;
     const nuevas = actuales.includes(valor)

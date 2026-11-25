@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>Memoria · Teitos</title>
+<title>Memoria · Queisiños</title>
 <style>
   @page { size: A4; margin: 18mm 18mm 16mm; }
   * { box-sizing: border-box; }
@@ -29,7 +29,7 @@
 <body>
 
 <div class="portada">
-  <h1>Teitos</h1>
+  <h1>Queisiños</h1>
   <p class="sub">Memoria del Proyecto 1 · PMDM · Portal de alquiler asequible (SPA en React)</p>
   <p class="sub">Autor/a: <b>Yang</b> · Repositorio: <b>github.com/yangcrypto314-alt/teitos</b> · Web publicada: <b>yangcrypto314-alt.github.io/teitos</b> · Figma: <b>figma.com/design/fAQzOazrPtt3sOzp9CJDiR</b></p>
 </div>
@@ -43,13 +43,13 @@
   <tr><td>URL del servidor una sola vez en <code>api/</code></td><td class="ok">Hecho</td><td><code>api/cliente.js</code> con la función <code>pedir()</code>. Ningún componente hace <code>fetch</code>.</td></tr>
   <tr><td>Rutas (React Router 7)</td><td class="ok">Hecho</td><td><code>/</code>, <code>/viviendas</code>, <code>/viviendas/:id</code>, <code>/solicitud</code>, <code>/mi-solicitud</code> y la 404 (<code>*</code>).</td></tr>
   <tr><td>Hooks propios con tres estados y <code>respuesta.ok</code></td><td class="ok">Hecho</td><td><code>useViviendas</code>, <code>useConvocatorias</code>, <code>useVivienda</code> y <code>useMiSolicitud</code>.</td></tr>
-  <tr><td>Búsqueda sin mayúsculas, tildes ni eñes</td><td class="ok">Hecho</td><td><code>utils/texto.js → normalizar()</code> con <code>normalize('NFD')</code>.</td></tr>
+  <tr><td>Búsqueda sin mayúsculas, tildes ni eñes</td><td class="ok">Hecho</td><td><code>utilidades/texto.js → normalizar()</code> con <code>normalize('NFD')</code>.</td></tr>
   <tr><td>Orden, adjudicadas fuera, paginación</td><td class="ok">Hecho</td><td>Orden por renta y superficie. Las adjudicadas se filtran en el hook. Paginación numerada de 12 en 12.</td></tr>
   <tr><td>Cuatro filtros + regla de acceso en su fichero</td><td class="ok">Hecho</td><td>Provincia y accesibilidad comparan un campo. Personas e ingresos llaman a <code>reglas/acceso.js → puedeAcceder()</code>.</td></tr>
   <tr><td>Solicitud por pasos, preferencias y modal</td><td class="ok">Hecho</td><td>4 pasos con validación al vuelo y al avanzar. Hasta 3 viviendas ordenables. <code>&lt;dialog&gt;</code> nativo.</td></tr>
   <tr><td>POST, consulta, PUT con plazo abierto y DELETE</td><td class="ok">Hecho</td><td>«Mi solicitud» solo permite modificar o retirar si la convocatoria está <code>abierta</code>.</td></tr>
   <tr><td>useState, useReducer, Context y localStorage</td><td class="ok">Hecho</td><td><code>SolicitudProvider</code>: la selección y el borrador sobreviven a la recarga.</td></tr>
-  <tr><td>CSS Modules y variables con nombres de Figma</td><td class="ok">Hecho</td><td><code>styles/variables.css</code> con los 8 roles. Sin librerías de estilos.</td></tr>
+  <tr><td>CSS Modules y variables con nombres de Figma</td><td class="ok">Hecho</td><td><code>estilos/variables.css</code> con los 8 roles. Sin librerías de estilos.</td></tr>
   <tr><td>Teclado, foco visible, no solo color, 390 px</td><td class="ok">Hecho</td><td>Anillo de foco, «Saltar al contenido», iconos + texto en los estados. Sin scroll horizontal a 390 px (comprobado en todas las rutas).</td></tr>
   <tr><td><code>npm run build</code> y URL pública</td><td class="ok">Hecho</td><td>Build sin errores. Despliegue automático en GitHub Pages con <code>.github/workflows/deploy.yml</code>.</td></tr>
   <tr><td>Filtros en la URL compartible</td><td class="ok">Hecho</td><td><code>useSearchParams</code>: <code>/viviendas?provincia=Lugo&amp;personas=2&amp;ingresos=24000</code>.</td></tr>
@@ -82,9 +82,9 @@ npm start            # web en http://localhost:5173 y API en http://localhost:30
   <tr><td>Botón (5 estados)</td><td><code>Boton</code></td><td>Variantes <code>primario</code>, <code>secundario</code> y <code>peligro</code>, más la prop <code>error</code>. Hover, foco y desactivado por CSS.</td></tr>
   <tr><td>Campo / selector</td><td><code>CampoTexto</code></td><td>Etiqueta, ayuda y error enlazados con <code>aria-describedby</code>.</td></tr>
   <tr><td>Mensaje de error</td><td><code>MensajeError</code></td><td>Igual que en Figma: icono «!» + texto sobre fondo rojo suave.</td></tr>
-  <tr><td>Tarjeta de vivienda</td><td><code>DwellingCard</code></td><td>En web se pasó de fila horizontal a rejilla de tarjetas, porque caben más resultados por pantalla. Añade un aviso para la 4.ª planta o más sin ascensor.</td></tr>
-  <tr><td>Tarjeta de convocatoria</td><td><code>CallCard</code></td><td>Color e icono por estado. Añade «viviendas libres» y «Todas adjudicadas» (26-6-MAD).</td></tr>
-  <tr><td>Paginación</td><td><code>Pagination</code></td><td>‹ 1 … 4 5 6 … 54 ›. La página activa va subrayada además de en color.</td></tr>
+  <tr><td>Tarjeta de vivienda</td><td><code>TarjetaVivienda</code></td><td>En web se pasó de fila horizontal a rejilla de tarjetas, porque caben más resultados por pantalla. Añade un aviso para la 4.ª planta o más sin ascensor.</td></tr>
+  <tr><td>Tarjeta de convocatoria</td><td><code>TarjetaConvocatoria</code></td><td>Color e icono por estado. Añade «viviendas libres» y «Todas adjudicadas» (26-6-MAD).</td></tr>
+  <tr><td>Paginación</td><td><code>Paginacion</code></td><td>‹ 1 … 4 5 6 … 54 ›. La página activa va subrayada además de en color.</td></tr>
   <tr><td>Estados del buscador</td><td><code>Estado</code></td><td><code>tipo="cargando"</code> (esqueleto), <code>"error"</code> (Reintentar) y <code>"vacio"</code> (Limpiar filtros).</td></tr>
   <tr><td>Pantallas 01–05 (1440)</td><td>Páginas</td><td>Misma estructura. Inicio añade la sección «Cómo funciona» y la lista de convocatorias cerradas/resueltas.</td></tr>
   <tr><td>Pantallas 06–08 (390)</td><td>CSS responsive</td><td>Menú hamburguesa y barra inferior Inicio · Buscar · Mi solicitud, como en Figma.</td></tr>

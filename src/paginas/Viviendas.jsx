@@ -1,12 +1,12 @@
 ﻿import { useMemo } from 'react';
 import { useSearchParams } from 'react-router';
-import DwellingCard from '../components/DwellingCard.jsx';
-import Estado from '../components/Estado.jsx';
-import FilterPanel from '../components/FilterPanel.jsx';
-import MensajeError from '../components/MensajeError.jsx';
-import Pagination from '../components/Pagination.jsx';
+import TarjetaVivienda from '../componentes/viviendas/TarjetaVivienda.jsx';
+import Estado from '../componentes/comunes/Estado.jsx';
+import Filtros from '../componentes/viviendas/Filtros.jsx';
+import MensajeError from '../componentes/comunes/MensajeError.jsx';
+import Paginacion from '../componentes/comunes/Paginacion.jsx';
 import useViviendas from '../hooks/useViviendas.js';
-import { normalizar } from '../utils/texto.js';
+import { normalizar } from '../utilidades/texto.js';
 import {
   cumpleIngresos,
   puedeAcceder,
@@ -154,10 +154,10 @@ export default function Viviendas() {
       <>
         <div className={styles.rejilla}>
           {visibles.map((v) => (
-            <DwellingCard key={v.id} vivienda={v} />
+            <TarjetaVivienda key={v.id} vivienda={v} />
           ))}
         </div>
-        <Pagination
+        <Paginacion
           pagina={paginaActual}
           totalPaginas={totalPaginas}
           onCambiar={cambiarPagina}
@@ -193,7 +193,7 @@ export default function Viviendas() {
       </form>
 
       <div className={styles.columnas}>
-        <FilterPanel
+        <Filtros
           filtros={filtros}
           provincias={provincias}
           onCambiar={(campo, valor) =>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
-import styles from './CallCard.module.css';
-import { formatearFecha } from '../utils/formato.js';
+import styles from './TarjetaConvocatoria.module.css';
+import { formatearFecha } from '../../utilidades/formato.js';
 
 // Texto e icono de cada estado: así no depende solo del color
 const ESTADOS = {
@@ -11,7 +11,7 @@ const ESTADOS = {
 
 // Componente «Tarjeta de convocatoria» de Figma.
 // Variante por estado (prop convocatoria.estado) y número de viviendas libres.
-export default function CallCard({ convocatoria, libres }) {
+export default function TarjetaConvocatoria({ convocatoria, libres }) {
   const {
     codigo, provincia, estado, fechaApertura,
     fechaCierre, sorteo, unidades, rentaDesde,
