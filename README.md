@@ -8,19 +8,21 @@ Portal de alquiler público asequible: convocatorias, buscador de viviendas con 
 
 ## Arrancar en otra máquina
 
-Necesitas Node.js 20 o superior. En la carpeta del proyecto:
+Necesitas **Node.js 22.12 o superior** (la versión LTS de https://nodejs.org). En la carpeta del proyecto bastan dos comandos:
 
 ```bash
 npm install
 ```
 
 ```bash
-npm run reset-datos
-```
-
-```bash
 npm start
 ```
+
+Antes de arrancar, `npm start` ejecuta `preparar.cjs`, que:
+- avisa con un mensaje claro si la versión de Node es antigua;
+- crea `db.json` a partir de `db.original.json` si no existe o está dañado.
+
+Para dejar los datos como al principio (sin solicitudes): `npm run reset-datos`.
 
 - La web queda en http://localhost:5173/
 - La API queda en http://localhost:3001/ (`/convocatorias`, `/viviendas`, `/solicitudes`)
