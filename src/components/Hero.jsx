@@ -34,25 +34,37 @@ function Hero({ provincias = [] }) {
             role="img"
             aria-label="Ilustración de viviendas entre colinas"
           >
-            <circle cx="426" cy="68" r="36" fill="#F2C078" />
-            <path d="M0 258Q102 191 199 251T390 231T520 230V360H0Z" fill="#347E67" />
-            <path d="M0 300Q105 231 202 292T398 270T520 272V360H0Z" fill="#1C7058" />
-            <g fill="#F4F1E6">
+            <circle cx="426" cy="68" r="36" fill="#F3C969" />
+            <path d="M0 258Q102 191 199 251T390 231T520 230V360H0Z" fill="#2A3858" />
+            <path d="M0 300Q105 231 202 292T398 270T520 272V360H0Z" fill="#1F2A44" />
+            <g fill="#F7F1E8">
               <path d="M85 173 169 111l84 62v139H85z" />
-              <path d="m238 162 89-66 89 66v150H238z" fill="#EEE8D8" />
-              <path d="m390 188 63-47 63 47v124H390z" fill="#F7F4E9" />
+              <path d="m238 162 89-66 89 66v150H238z" fill="#F1E6D6" />
+              <path d="m390 188 63-47 63 47v124H390z" fill="#FBF6EE" />
             </g>
-            <g fill="#92B6A8">
-              <path d="M108 184h24v34h-24zm48 0h24v34h-24zm48 0h24v34h-24z" />
-              <path d="M263 174h25v35h-25zm51 0h25v35h-25zm51 0h25v35h-25z" />
-              <path d="M412 199h21v31h-21zm43 0h21v31h-21z" />
+            {/* Tejados de teja */}
+            <g fill="#C0582C">
+              <path d="M73 180 169 106l96 74h-14l-82-61-82 61z" />
+              <path d="m226 169 101-77 101 77h-14l-87-65-87 65z" />
+              <path d="m380 195 73-56 73 56h-12l-61-46-61 46z" />
             </g>
-            <g fill="#8A9C8F">
+            <g fill="#C9CFDF">
+              <path d="M108 184h24v34h-24zm96 0h24v34h-24z" />
+              <path d="M263 174h25v35h-25zm102 0h25v35h-25z" />
+              <path d="M455 199h21v31h-21z" />
+            </g>
+            {/* Ventanas encendidas */}
+            <g fill="#F3C969">
+              <path d="M156 184h24v34h-24z" />
+              <path d="M314 174h25v35h-25z" />
+              <path d="M412 199h21v31h-21z" />
+            </g>
+            <g fill="#A84A22">
               <path d="M151 257h25v55h-25z" />
               <path d="M302 256h28v56h-28z" />
               <path d="M427 265h23v47h-23z" />
             </g>
-            <path d="M58 313q20-22 40 0m368-3q20-22 40 0" fill="none" stroke="#D9E9A8" strokeLinecap="round" strokeWidth="5" />
+            <path d="M58 313q20-22 40 0m368-3q20-22 40 0" fill="none" stroke="#5A6684" strokeLinecap="round" strokeWidth="5" />
           </svg>
         </div>
         <form

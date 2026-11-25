@@ -35,7 +35,7 @@
 
 .icono svg {
   width: 24px;
-  stroke: #d9e9a8;
+  stroke: var(--color-tinta-clara);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.8;

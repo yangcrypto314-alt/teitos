@@ -3,11 +3,24 @@
   width: 100vw;
   margin: -36px calc(50% - 50vw) 0;
   padding: 48px 0 112px;
-  background: var(--color-primario);
+  background: var(--color-texto);
   color: var(--color-sobre-primario);
 }
 
+/* Silueta de tejados muy tenue al fondo de la portada */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 90px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='90' viewBox='0 0 240 90'%3E%3Cpath d='M0 90V52l28-22 28 22v-8l34-26 34 26v12l22-16 22 16V40l36-28 36 28v50z' fill='%23ffffff' fill-opacity='.05'/%3E%3C/svg%3E") repeat-x bottom left / 240px 90px;
+  pointer-events: none;
+  z-index: 0;
+}
+
 .interior {
+  position: relative;
+  z-index: 1;
   display: grid;
   min-height: 390px;
   grid-template-columns: 1fr 0.9fr;
@@ -21,7 +34,7 @@
 
 .eyebrow {
   margin-bottom: 20px;
-  color: #d9e9a8;
+  color: var(--color-tinta-clara);
   font-size: 0.82rem;
   font-weight: 800;
   letter-spacing: 0.09em;
@@ -40,7 +53,7 @@
 .descripcion {
   max-width: 470px;
   margin-bottom: 28px;
-  color: #e4f0e9;
+  color: #dfe3ee;
   font-size: 1.08rem;
 }
 
@@ -50,14 +63,14 @@
   align-items: center;
   padding: 0 22px;
   border-radius: 12px;
-  background: #d9e9a8;
+  background: var(--color-tinta-clara);
   color: var(--color-texto);
   font-weight: 750;
   text-decoration: none;
 }
 
 .boton:hover {
-  background: #e6f0c2;
+  background: #f7d88a;
 }
 
 .ilustracion {
@@ -67,11 +80,12 @@
 
 .busqueda {
   position: absolute;
+  z-index: 2;
   right: 0;
   bottom: -64px;
   left: 0;
   padding: 22px 28px 24px;
-  border: 1px solid #e3e8e3;
+  border: 1px solid var(--color-borde);
   border-radius: 18px;
   background: var(--color-superficie);
   box-shadow: var(--sombra-suave);
@@ -121,7 +135,7 @@
 .confianza span + span::before {
   content: "·";
   margin-right: 40px;
-  color: #9eaaa3;
+  color: #b3a796;
 }
 
 @media (max-width: 1040px) and (min-width: 761px) {

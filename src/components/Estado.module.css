@@ -19,7 +19,7 @@
 .lineaCorta {
   display: block;
   border-radius: 8px;
-  background: linear-gradient(90deg, #e8ede9 0%, #f3f6f3 50%, #e8ede9 100%);
+  background: linear-gradient(90deg, #efe7da 0%, #f8f3ea 50%, #efe7da 100%);
   background-size: 200% 100%;
   animation: brillo 1.3s ease-in-out infinite;
 }
@@ -74,7 +74,7 @@
 }
 
 .error {
-  border-color: #efcfca;
+  border-color: #f0c9cc;
 }
 
 .etiquetaError {

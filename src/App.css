@@ -35,11 +35,24 @@ main:focus {
 }
 
 .footer {
-  padding: 36px 0 24px;
+  position: relative;
+  padding: 52px 0 24px;
   border-top: 1px solid var(--color-borde);
   background: var(--color-superficie);
   color: var(--color-texto-suave);
   font-size: 0.875rem;
+}
+
+/* Fila de tejados sobre el pie de página */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='16' viewBox='0 0 48 16'%3E%3Cpath d='M0 15h8l12-12 12 12h16' fill='none' stroke='%23a84a22' stroke-opacity='.35' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") repeat-x left top / 48px 16px;
+  pointer-events: none;
 }
 
 .footer p {

@@ -14,7 +14,7 @@
     padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
     border-top: 1px solid var(--color-borde);
     background: var(--color-superficie);
-    box-shadow: 0 -6px 20px rgb(23 53 45 / 6%);
+    box-shadow: 0 -6px 20px rgb(31 42 68 / 6%);
   }
 
   .barra a {

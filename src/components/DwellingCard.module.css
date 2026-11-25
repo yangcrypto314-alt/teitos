@@ -3,7 +3,7 @@
   border: 1px solid var(--color-borde);
   border-radius: 16px;
   background: var(--color-superficie);
-  box-shadow: 0 5px 18px rgb(23 53 45 / 4%);
+  box-shadow: 0 5px 18px rgb(31 42 68 / 4%);
   text-align: left;
   transition: box-shadow 140ms ease, transform 140ms ease;
 }
@@ -17,12 +17,12 @@
   display: grid;
   grid-template-rows: auto auto;
   overflow: hidden;
-  background: #e9ece7;
+  background: #efe7da;
 }
 
 .imagenReferencia {
   padding: 10px 14px;
-  border-bottom: 1px solid rgb(23 53 45 / 10%);
+  border-bottom: 1px solid rgb(31 42 68 / 10%);
   color: var(--color-texto-suave);
   font-size: 0.78rem;
   font-weight: 700;
@@ -97,7 +97,7 @@
 }
 
 .enlace:hover {
-  background: #d8e9df;
+  background: #f6e3d6;
 }
 
 .lugar {
@@ -142,7 +142,7 @@
   margin: 0;
   padding: 6px 12px;
   border-radius: 999px;
-  background: #e5e9e6;
+  background: #ece4d8;
   color: var(--color-texto-suave);
   font-size: 0.8rem;
   font-weight: 700;

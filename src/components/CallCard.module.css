@@ -6,7 +6,7 @@
   border-top: 4px solid var(--color-primario);
   border-radius: 16px;
   background: var(--color-superficie);
-  box-shadow: 0 5px 18px rgb(23 53 45 / 4%);
+  box-shadow: 0 5px 18px rgb(31 42 68 / 4%);
   transition: box-shadow 140ms ease, transform 140ms ease;
 }
 

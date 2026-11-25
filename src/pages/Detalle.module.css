@@ -18,20 +18,20 @@
   border: 1px solid var(--color-borde);
   border-radius: 18px;
   background: var(--color-superficie);
-  box-shadow: 0 5px 18px rgb(23 53 45 / 4%);
+  box-shadow: 0 5px 18px rgb(31 42 68 / 4%);
 }
 
 .ilustracion {
   display: flex;
   flex-direction: column;
   min-height: 360px;
-  background: #e9ece7;
+  background: #efe7da;
 }
 
 .ilustracionReferencia {
   width: 100%;
   padding: 12px 18px;
-  border-bottom: 1px solid rgb(23 53 45 / 10%);
+  border-bottom: 1px solid rgb(31 42 68 / 10%);
   color: var(--color-texto-suave);
   font-size: 0.82rem;
   font-weight: 700;
@@ -249,7 +249,7 @@
     margin-inline: -16px;
     padding: 12px 16px;
     background: var(--color-superficie);
-    box-shadow: 0 -8px 20px rgb(23 53 45 / 7%);
+    box-shadow: 0 -8px 20px rgb(31 42 68 / 7%);
   }
 
   .acciones button,

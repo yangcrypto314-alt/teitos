@@ -73,7 +73,7 @@
   border: 1px solid var(--color-borde);
   border-radius: 16px;
   background: var(--color-superficie);
-  box-shadow: 0 5px 18px rgb(23 53 45 / 4%);
+  box-shadow: 0 5px 18px rgb(31 42 68 / 4%);
 }
 
 .tituloPaso {
@@ -107,7 +107,7 @@
   padding: 16px;
   border: 1px solid var(--color-borde);
   border-radius: 12px;
-  background: #fbfcfa;
+  background: #fffcf7;
   text-align: left;
 }
 

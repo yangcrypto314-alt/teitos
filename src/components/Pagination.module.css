@@ -58,7 +58,7 @@
 .flecha:disabled {
   border-color: var(--color-borde);
   background: transparent;
-  color: #a3ada8;
+  color: #b0a595;
 }
 
 .hueco {

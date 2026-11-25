@@ -35,12 +35,48 @@
   margin-bottom: 20px;
 }
 
+/* Casita pequeña delante de los títulos */
+.titulo h2,
+.subtitulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.titulo h2::before,
+.subtitulo::before {
+  content: "";
+  flex: none;
+  width: 1.05em;
+  height: 1.05em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 11 12 4l9 7' fill='none' stroke='%23a84a22' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M6 10.5V20h12v-9.5' fill='none' stroke='%231f2a44' stroke-width='2' stroke-linejoin='round'/%3E%3Crect x='10' y='14' width='4' height='6' fill='%23e9b949'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
 .comoFunciona {
+  position: relative;
+  overflow: hidden;
   margin: 8px 0 24px;
   padding: clamp(24px, 4vw, 40px);
   border-radius: 20px;
   background: var(--color-texto);
   color: var(--color-sobre-primario);
+}
+
+/* Silueta de tejados tenue en la esquina */
+.comoFunciona::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 320px;
+  height: 120px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='120' viewBox='0 0 320 120'%3E%3Cpath d='M0 120V76l40-32 40 32V60l56-44 56 44v20l32-24 32 24V52l32-26 32 26v68z' fill='%23ffffff' fill-opacity='.06'/%3E%3C/svg%3E") no-repeat right bottom / contain;
+  pointer-events: none;
+}
+
+.comoFunciona ol {
+  position: relative;
+  z-index: 1;
 }
 
 .comoFunciona h2 {
@@ -61,23 +97,25 @@
 
 .comoFunciona h3 {
   margin: 12px 0 6px;
-  color: #d9e9a8;
+  color: var(--color-tinta-clara);
   font-family: var(--font-serif);
   font-size: 1.35rem;
 }
 
 .comoFunciona p {
   margin: 0;
-  color: #cfe0d7;
+  color: #d5d9e6;
   font-size: 0.95rem;
 }
 
+/* Número dentro de una casita (tejado + fachada) */
 .numero {
   display: inline-grid;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
+  padding-top: 8px;
   place-items: center;
-  border-radius: 12px;
+  clip-path: polygon(50% 0, 100% 42%, 100% 100%, 0 100%, 0 42%);
   background: var(--color-acento);
   color: var(--color-texto);
   font-weight: 800;

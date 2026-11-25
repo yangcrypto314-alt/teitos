@@ -1,20 +1,21 @@
 :root {
   /* Ocho roles de color (mismos nombres que las variables de Figma) */
-  --color-fondo: #f4f5f0;
-  --color-superficie: #ffffff;
-  --color-texto: #17352d;
-  --color-texto-suave: #61736b;
-  --color-primario: #1c7058;
+  --color-fondo: #f7f1e8;
+  --color-superficie: #fffdf9;
+  --color-texto: #1f2a44;
+  --color-texto-suave: #5d6478;
+  --color-primario: #a84a22;
   --color-sobre-primario: #ffffff;
-  --color-borde: #dce4de;
-  --color-error: #b33a32;
-  --color-acento: #f2c078;
-  --color-primario-hover: #155641;
-  --color-primario-suave: #e5f1eb;
-  --color-error-suave: #fcebe8;
+  --color-borde: #e8dccd;
+  --color-error: #b0232f;
+  --color-acento: #e9b949;
+  --color-primario-hover: #8a3b1a;
+  --color-primario-suave: #f6e3d6;
+  --color-error-suave: #fbe6e7;
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --color-tinta-clara: #f3c969;
   --font-serif: Georgia, "Times New Roman", serif;
-  --sombra-suave: 0 12px 32px rgb(23 53 45 / 8%);
+  --sombra-suave: 0 12px 32px rgb(31 42 68 / 9%);
 
   /* Escala de espaciado */
   --espacio-1: 4px;

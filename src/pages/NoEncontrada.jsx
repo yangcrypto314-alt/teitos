@@ -6,9 +6,9 @@ export default function NoEncontrada() {
   return (
     <section className={styles.pagina} aria-labelledby="titulo-404">
       <svg className={styles.dibujo} viewBox="0 0 200 140" aria-hidden="true">
-        <path d="M10 120Q60 92 100 112T190 108V140H10Z" fill="#B9D3B5" />
-        <path d="M60 60 100 30l40 30v62H60z" fill="#F6F4EA" stroke="#547567" strokeWidth="3" strokeDasharray="6 6" />
-        <text x="100" y="98" textAnchor="middle" fontSize="30" fontWeight="700" fill="#1C7058">?</text>
+        <path d="M10 120Q60 92 100 112T190 108V140H10Z" fill="#EADFCB" />
+        <path d="M60 60 100 30l40 30v62H60z" fill="#FBF6EE" stroke="#A84A22" strokeWidth="3" strokeDasharray="6 6" />
+        <text x="100" y="98" textAnchor="middle" fontSize="30" fontWeight="700" fill="#1F2A44">?</text>
       </svg>
       <p className={styles.codigo}>Error 404</p>
       <h1 id="titulo-404">Este teito no existe</h1>

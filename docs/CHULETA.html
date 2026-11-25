@@ -277,7 +277,7 @@ LETRAS_DNI[numero % 23] === letra  // 'TRWAGMYFPDXBNJZSQVHLCKE'   ejemplo válid
 <tr><th style="width:28%">Te piden…</th><th>Haces…</th></tr>
 <tr><td>Mostrar 6 por página</td><td><code>pages/Viviendas.jsx</code> → <code>const POR_PAGINA = 12;</code> → <code>6</code>.</td></tr>
 <tr><td>Permitir 5 viviendas</td><td><code>context/solicitudReducer.js</code> → <code>MAX_PREFERENCIAS = 3</code> → <code>5</code> (los textos lo usan solos).</td></tr>
-<tr><td>Cambiar el color principal</td><td><code>styles/variables.css</code> → <code>--color-primario: #1c7058;</code> → otro (p. ej. <code>#1d4ed8</code>).</td></tr>
+<tr><td>Cambiar el color principal</td><td><code>styles/variables.css</code> → <code>--color-primario: #a84a22;</code> → otro (p. ej. <code>#1d4ed8</code>).</td></tr>
 <tr><td>Cambiar IPREM o esfuerzo</td><td><code>reglas/acceso.js</code> → <code>IPREM_ANUAL = 8400</code> o <code>ESFUERZO_MAXIMO = 0.3</code> → <code>0.35</code>.</td></tr>
 <tr><td>Nuevo orden (dormitorios)</td><td>En <code>ORDENES</code> de Viviendas.jsx añadir:<pre>dormitorios: { texto: 'Más dormitorios', comparar: (a, b) =&gt; b.dormitorios - a.dormitorios },</pre></td></tr>
 <tr><td>Buscar también por código postal</td><td>Viviendas.jsx: <code>[v.municipio, v.provincia, v.referencia]</code> → añadir <code>, v.codigoPostal</code>.</td></tr>
