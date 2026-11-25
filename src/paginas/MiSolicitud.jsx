@@ -177,13 +177,13 @@ export default function MiSolicitud() {
         onCerrar={() => setModalRetirar(false)}
         acciones={
           <>
-            <button
-              type="button"
+            <Boton
+              variante="secundario"
               onClick={() => setModalRetirar(false)}
               disabled={retirando}
             >
               Cancelar
-            </button>
+            </Boton>
             <Boton variante="peligro" onClick={confirmarRetirada} disabled={retirando}>
               {retirando ? 'Retirando…' : 'Sí, retirar'}
             </Boton>

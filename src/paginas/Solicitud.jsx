@@ -1,6 +1,7 @@
-﻿import { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
 import Modal from '../componentes/comunes/Modal.jsx';
+import Boton from '../componentes/comunes/Boton.jsx';
 import PasoDatos from '../componentes/solicitud/PasoDatos.jsx';
 import PasoHogar from '../componentes/solicitud/PasoHogar.jsx';
 import PasoRevision from '../componentes/solicitud/PasoRevision.jsx';
@@ -288,16 +289,12 @@ export default function Solicitud() {
         onCerrar={() => setModalAbierto(false)}
         acciones={
           <>
-            <button
-              type="button"
-              onClick={() => setModalAbierto(false)}
-              disabled={enviando}
-            >
+            <Boton variante="secundario" onClick={() => setModalAbierto(false)} disabled={enviando}>
               Cancelar
-            </button>
-            <button type="button" onClick={confirmarEnvio} disabled={enviando}>
+            </Boton>
+            <Boton onClick={confirmarEnvio} disabled={enviando}>
               {enviando ? 'Enviando…' : 'Confirmar y enviar'}
-            </button>
+            </Boton>
           </>
         }
       >

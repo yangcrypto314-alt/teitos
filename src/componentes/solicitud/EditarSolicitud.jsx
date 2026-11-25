@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Boton from '../comunes/Boton.jsx';
 import PasoDatos from './PasoDatos.jsx';
 import PasoHogar from './PasoHogar.jsx';
 import { actualizarSolicitud } from '../../api/solicitudes.js';
@@ -148,12 +149,12 @@ export default function EditarSolicitud({ solicitud, viviendas, onGuardada, onCa
       )}
 
       <div className={styles.navegacion}>
-        <button type="button" onClick={onCancelar} disabled={guardando}>
+        <Boton variante="secundario" onClick={onCancelar} disabled={guardando}>
           Cancelar
-        </button>
-        <button type="submit" disabled={guardando}>
+        </Boton>
+        <Boton type="submit" disabled={guardando}>
           {guardando ? 'Guardando…' : 'Guardar cambios'}
-        </button>
+        </Boton>
       </div>
     </form>
   );
